@@ -1,0 +1,1 @@
+String appName = '3R POS';
