@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.2.4
+  shared_preferences: ^2.0.15
+  fluttertoast: ^8.0.9
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -80,10 +82,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
