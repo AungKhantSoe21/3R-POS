@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
-      theme: getTheme(),
+      theme: getTheme(context),
       home: userId == ''
             ? const LoginScreen()
             : HomeScreen(),
