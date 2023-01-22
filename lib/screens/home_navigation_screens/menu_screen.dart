@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/menu_screens/new_menu_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -15,7 +16,11 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => NewMenuScreen())
+          );
+        },
         backgroundColor: primaryColor,
         child: Stack(
           clipBehavior: Clip.none,

@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/table_screens/new_table_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -10,75 +11,82 @@ class TableScreen extends StatefulWidget {
 }
 
 class _TableScreenState extends State<TableScreen> {
-  List tableList = [
-    ['1', "1", "10"],
-    ['2', "2", "5"],
-    ['3', "2", "4"],
-    ['4', "3", "3"],
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final ref = FirebaseDatabase.instance.ref().child("Tables");
+
     return Scaffold(
-      body: GridView.builder(
-        itemCount: tableList.length + 1,
-        physics: BouncingScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 15.0,
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        itemBuilder: (BuildContext context, int index) {
-          if(index == tableList.length) {
-            return InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => NewTableScreen())
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: primaryColor,
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.add, size: 50,),
-                    SizedBox(height: 5,),
-                    Text("New Table")
-                  ],
-                ),
+      body: StreamBuilder(
+        stream: ref.onValue,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if(snapshot.hasData) {
+            final map = snapshot.data.snapshot.value;
+            List tables = map.values.toList();
+            tables.sort((a, b) => a['table_no'].compareTo(b['table_no']));
+            return GridView.builder(
+              itemCount: tables.length + 1,
+              physics: BouncingScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 15.0,
               ),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              itemBuilder: (BuildContext context, int index) {
+                if(index == tables.length) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => NewTableScreen())
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: primaryColor,
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.add, size: 50,),
+                          SizedBox(height: 5,),
+                          Text("New Table")
+                        ],
+                      ),
+                    ),
+                  );
+                } else {
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        textRow("No", tables[index]['table_no']),
+                        textRow(
+                          "Shape", 
+                          tables[index]['table_shape'], 
+                          iconOn: true, 
+                          icon: tables[index]['table_shape'] == "Rectangle" 
+                          ? Icons.rectangle_outlined
+                          : tables[index]['table_shape'] == "Circle" 
+                          ? Icons.circle_outlined
+                          : Icons.square_outlined
+                        ),
+                        textRow("Capable", tables[index]['customer_capacity'].toString()),
+                      ],
+                    ),
+                  );
+                }
+              },
             );
           } else {
-            return Container(
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  textRow("No", tableList[index][0]),
-                  textRow(
-                    "Shape", 
-                    tableList[index][1], 
-                    iconOn: true, 
-                    icon: tableList[index][1] == "1" 
-                    ? Icons.rectangle_outlined
-                    : tableList[index][1] == "2" 
-                    ? Icons.circle_outlined
-                    : Icons.square_outlined
-                  ),
-                  textRow("Capable", tableList[index][2]),
-                ],
-              ),
-            );
+            return CircularProgressIndicator();
           }
-        },
+        }
       ),
     );
   }
