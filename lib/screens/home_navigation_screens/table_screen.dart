@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/table_screens/new_table_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 
 class TableScreen extends StatefulWidget {
@@ -30,19 +31,26 @@ class _TableScreenState extends State<TableScreen> {
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         itemBuilder: (BuildContext context, int index) {
           if(index == tableList.length) {
-            return Container(
-              decoration: BoxDecoration(
-                color: primaryColor,
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.add, size: 50,),
-                  SizedBox(height: 5,),
-                  Text("New Table")
-                ],
+            return InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => NewTableScreen())
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add, size: 50,),
+                    SizedBox(height: 5,),
+                    Text("New Table")
+                  ],
+                ),
               ),
             );
           } else {

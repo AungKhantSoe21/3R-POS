@@ -9,7 +9,7 @@ ThemeData getTheme(BuildContext context) {
     fontFamily: poppinFont,
     textTheme: Theme.of(context).textTheme.apply(
       fontSizeFactor: 0.9,
-      fontFamily: poppinFont
+      fontFamily: poppinFont,
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: primaryColor,

@@ -1,15 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:r_pos/core/persistence/user_persistence.dart';
 import 'package:r_pos/screens/auth_screens/login_screen.dart';
-
 import 'package:r_pos/screens/home_screen.dart';
 import 'package:r_pos/themes.dart';
 import 'package:r_pos/utils/constant_text.dart';
 
-void main() {
+void main() async{
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
