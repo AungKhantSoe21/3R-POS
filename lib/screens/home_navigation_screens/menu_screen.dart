@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/menu_screens/new_menu_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -10,16 +14,27 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  List categoryList = ["Bar", "Kitchen", "Beverage", "Launch", "Breakfast"];
+  final ref = FirebaseDatabase.instance.ref();
+  List categoryList = [];
+  List items = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => NewMenuScreen())
-          );
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => NewMenuScreen()));
         },
         backgroundColor: primaryColor,
         child: Stack(
@@ -42,63 +57,168 @@ class _MenuScreenState extends State<MenuScreen> {
           ],
         ),
       ),
-      body: DefaultTabController(
-        length: categoryList.length,
-        child: Column(
-          children: [
-            TabBar(
-              isScrollable: true,
-              indicatorColor: primaryColor,
-              tabs: [
-                for(int i = 0; i < categoryList.length; i++)
-                Tab( 
-                  child: Text(categoryList[i], style: TextStyle(
-                    color: Colors.black
-                  ),),
-                )
-              ],
-            ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  for(int i = 0; i < categoryList.length; i++)
-                  GridView.builder(
-                    itemCount: 8,
-                    physics: BouncingScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  
-                      crossAxisCount: 2,  
-                      crossAxisSpacing: 10.0,  
-                      mainAxisSpacing: 15.0  
-                    ), 
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    itemBuilder: (BuildContext context, int index){ 
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.17,
-                            decoration: BoxDecoration(
-                              color: primaryColor,
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(image: AssetImage("assets/images/default_menu.png"), fit: BoxFit.cover)
+      body: StreamBuilder(
+          stream: ref.child("Category").onValue.asBroadcastStream(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              final map = snapshot.data.snapshot.value;
+              categoryList = map.values.toList();
+              categoryList.sort(
+                  (a, b) => a['category_name'].compareTo(b['category_name']));
+              return DefaultTabController(
+                length: categoryList.length,
+                child: Column(
+                  children: [
+                    TabBar(
+                      isScrollable: true,
+                      indicatorColor: primaryColor,
+                      tabs: [
+                        for (int i = 0; i < categoryList.length; i++)
+                          Tab(
+                            child: Text(
+                              categoryList[i]['category_name'],
+                              style: TextStyle(color: Colors.black),
                             ),
-                          ),
-                          SizedBox(height: 5,),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 5.0),
-                            child: SizedBox(child: Text("BB Q Style", style: TextStyle(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis,)),
                           )
-                        ],
-                      );
-                    },
-                  )
-                ],
-              )
-            )
-          ],
-        ),
-      ),
+                      ],
+                    ),
+                    Expanded(
+                        child: TabBarView(
+                      children: [
+                        for (int i = 0; i < categoryList.length; i++)
+                          // StreamBuilder(
+                          //   stream: ref.child("Item").child(categoryList[i]["category_name"]).onValue.asBroadcastStream(),
+                          //   builder: (BuildContext ctx, AsyncSnapshot snapshotData) {
+                          //     if(snapshotData.hasData) {
+                          //       final mapData = snapshotData.data.snapshot.value;
+                          //       items = mapData == null ? [] : mapData.values.toList();
+                          //       if(items.isEmpty) {
+                          //         return Container(
+                          //         child: Center(
+                          //           child: Text("No menu in this category!"),
+                          //         )
+                          //       );
+                          //       } else {
+                          //         items.sort((a, b) => a['item_name'].compareTo(b['item_name']));
+                          //         return GridView.builder(
+                          //           itemCount: items.length,
+                          //           physics: BouncingScrollPhysics(),
+                          //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          //             crossAxisCount: 2,
+                          //             crossAxisSpacing: 10.0,
+                          //             mainAxisSpacing: 15.0
+                          //           ),
+                          //           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          //           itemBuilder: (BuildContext context, int index){
+                          //             return Column(
+                          //               crossAxisAlignment: CrossAxisAlignment.start,
+                          //               children: [
+                          //                 Container(
+                          //                   height: MediaQuery.of(context).size.height * 0.17,
+                          //                   decoration: BoxDecoration(
+                          //                     color: primaryColor,
+                          //                     border: Border.all(),
+                          //                     borderRadius: BorderRadius.circular(10),
+                          //                     image: DecorationImage(image: AssetImage("assets/images/default_menu.png"), fit: BoxFit.cover)
+                          //                   ),
+                          //                 ),
+                          //                 SizedBox(height: 5,),
+                          //                 Padding(
+                          //                   padding: const EdgeInsets.only(left: 5.0),
+                          //                   child: SizedBox(child: Text(items[index]['item_name'], style: TextStyle(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis,)),
+                          //                 )
+                          //               ],
+                          //             );
+                          //           },
+                          //         );
+                          //       }
+                          //     } else {
+                          //       return Container(
+                          //         child: Center(
+                          //           child: Text("Loading..."),
+                          //         )
+                          //       );
+                          //     }
+                          //   }
+                          // )
+                          FirebaseAnimatedList(
+                              query: ref
+                                  .child("Item")
+                                  .child(categoryList[i]["category_name"]),
+                              itemBuilder: (context, snapshot, animation, index) {
+                                Map mydata = snapshot.value as Map;
+                                mydata['key'] = snapshot.key;
+
+                                if(snapshot.hasChild("image_name") == true) {
+                                  return Center(
+                                    child: Text("No menu for this category!"),
+                                  );
+                                } else {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.45,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: primaryColor,
+                                            border: Border.all(),
+                                            borderRadius: BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/images/default_menu.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: SizedBox(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  mydata['item_name'],
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18
+                                                  ),
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                                SizedBox(height: 10,),
+                                                Text(
+                                                  mydata['item_price'] + " Ks",
+                                                  style: TextStyle(
+                                                    fontSize: 14
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                }
+                              })
+                      ],
+                    ))
+                  ],
+                ),
+              );
+            } else {
+              return CircularProgressIndicator();
+            }
+          }),
     );
   }
 }

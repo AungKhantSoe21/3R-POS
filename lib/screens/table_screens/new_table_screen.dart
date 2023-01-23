@@ -45,7 +45,7 @@ class _NewTableScreenState extends State<NewTableScreen> {
             onTap: () async {
               FocusScope.of(context).requestFocus(FocusNode());
               List tableShape = ["Circle", "Rectangle", "Square"];
-              var data = await dropDownBottomModal(context, tableShape);
+              var data = await dropDownBottomModal(context, true, tableShape, ref);
               
               setState(() {
                 if(data == "") {
