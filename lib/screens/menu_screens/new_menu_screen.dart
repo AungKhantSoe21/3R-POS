@@ -1,3 +1,9 @@
+import 'dart:developer';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -19,6 +25,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
   final TextEditingController _category = TextEditingController();
   final TextEditingController _categoryName = TextEditingController();
 
+  File? image;
+  String imageUrl = "";
+
   @override
   Widget build(BuildContext context) {
     final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
@@ -35,11 +44,34 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
           if(!isKeyboard)
           SizedBox(
             height: 130,
-            child: CircleAvatar(
-              backgroundColor: primaryColor,
-              radius: 50,
-              child: Center(
-                child: Icon(Icons.camera_alt, color: Colors.black,),
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: ((buider) => showCustomBottomSheet()),
+                );
+              },
+              customBorder: const CircleBorder(),
+              child: image != null 
+              ? CircleAvatar(
+                radius: 52,
+                backgroundColor: Colors.black,
+                child: CircleAvatar(
+                    backgroundColor: primaryColor,
+                    radius: 50,
+                    backgroundImage: FileImage(image!),
+                  ),
+              )
+              : CircleAvatar(
+                radius: 52,
+                backgroundColor: Colors.black,
+                child: CircleAvatar(
+                  backgroundColor: primaryColor,
+                  radius: 50,
+                  child: Center(
+                    child: Icon(Icons.camera_alt, color: Colors.black,),
+                  ),
+                ),
               ),
             ),
           ),
@@ -57,7 +89,6 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         children: [
                           InkWell(
                             onTap: () async {
-
                               String data = await dropDownBottomModal(
                                 context, false, [], que, dropListItemName: "category_name"
                               );
@@ -163,7 +194,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         ),
                         onPressed: () async {
                           await ref.child("Item").child(_category.text).push().set({
-                            "image_path" : "",
+                            "image_path" : imageUrl,
                             "item_name" : _menuNameController.text,
                             "item_price" : _menuPriceController.text,
                             "item_status" : _menuStatus.text 
@@ -223,5 +254,77 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
         ),
       ),
     );
+  }
+
+  Widget showCustomBottomSheet() {
+    return Container(
+      padding: const EdgeInsets.all(25),
+      color: Colors.white10,
+      height: 120,
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          InkWell(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+              getPhoto(ImageSource.camera);
+              Navigator.pop(context);
+            },
+            child: Column(
+              children: [
+                Icon(Icons.camera_alt_outlined),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Camera")
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+              getPhoto(ImageSource.gallery);
+              Navigator.pop(context);
+            },
+            child: Column(
+              children: [
+                Icon(Icons.photo_outlined),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Gallery")
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future getPhoto(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() {
+        this.image = imageTemporary;
+      });
+      String uniqueName = DateTime.now().millisecondsSinceEpoch.toString() + image.path.toUpperCase();
+      Reference storageRef = FirebaseStorage.instance.ref();
+      Reference refDirImage = storageRef.child("images");
+      Reference refImageToUpload = refDirImage.child(uniqueName);
+      try {
+        await refImageToUpload.putFile(imageTemporary);
+        imageUrl = await refImageToUpload.getDownloadURL();
+      } catch (e) {
+        log("Error: $e");
+      }
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print('Fail to pick image: $e');
+      }
+    }
   }
 }

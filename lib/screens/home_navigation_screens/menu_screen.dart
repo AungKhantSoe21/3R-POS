@@ -149,7 +149,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 Map mydata = snapshot.value as Map;
                                 mydata['key'] = snapshot.key;
 
-                                if(snapshot.hasChild("image_name") == true) {
+                                if(snapshot.hasChild("image_path") != true) {
                                   return Center(
                                     child: Text("No menu for this category!"),
                                   );
@@ -167,9 +167,9 @@ class _MenuScreenState extends State<MenuScreen> {
                                             border: Border.all(),
                                             borderRadius: BorderRadius.circular(10),
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                "assets/images/default_menu.png",
-                                              ),
+                                              image: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
+                                              ? NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
+                                              : NetworkImage(mydata['image_path']),
                                               fit: BoxFit.cover,
                                             ),
                                           ),
