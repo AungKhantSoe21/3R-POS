@@ -84,7 +84,7 @@ class _TableScreenState extends State<TableScreen> {
               },
             );
           } else {
-            return CircularProgressIndicator();
+            return Container();
           }
         }
       ),

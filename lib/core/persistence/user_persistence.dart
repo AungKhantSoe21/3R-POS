@@ -2,19 +2,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPersistence {
 
-  saveUserPersistence(String userId) async {
+  saveUserPersistence(String username, String role) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('userId', userId);
+    prefs.setStringList("userdata", [
+      username, role
+    ]);
   }
 
   getUserPreference() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final uId = prefs.getString('userId');
-    return uId;
+    final data = prefs.getStringList("userdata");
+    return data;
   }
 
   removeUserPreference() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('userId');
+    prefs.remove('userdata');
   }
 }

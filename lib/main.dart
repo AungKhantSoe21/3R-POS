@@ -23,18 +23,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String userId = "";
+  String username = "";
 
   @override
   void initState() {
     FlutterNativeSplash.remove();
+    getUserData();
     super.initState();
   }
 
   getUserData() async {
     final getUserPreference = await UserPersistence().getUserPreference();
     setState(() {
-        userId = getUserPreference ?? '';
+        username = getUserPreference.toString() == "null" ? '' :  getUserPreference[0];
       },
     );
   }
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: appName,
       theme: getTheme(context),
-      home: userId == ''
+      home: username == ''
             ? const LoginScreen()
             : HomeScreen(),
       debugShowCheckedModeBanner: false,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +31,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => NewMenuScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => NewMenuScreen()));
         },
         backgroundColor: primaryColor,
         child: Stack(
@@ -86,61 +83,6 @@ class _MenuScreenState extends State<MenuScreen> {
                         child: TabBarView(
                       children: [
                         for (int i = 0; i < categoryList.length; i++)
-                          // StreamBuilder(
-                          //   stream: ref.child("Item").child(categoryList[i]["category_name"]).onValue.asBroadcastStream(),
-                          //   builder: (BuildContext ctx, AsyncSnapshot snapshotData) {
-                          //     if(snapshotData.hasData) {
-                          //       final mapData = snapshotData.data.snapshot.value;
-                          //       items = mapData == null ? [] : mapData.values.toList();
-                          //       if(items.isEmpty) {
-                          //         return Container(
-                          //         child: Center(
-                          //           child: Text("No menu in this category!"),
-                          //         )
-                          //       );
-                          //       } else {
-                          //         items.sort((a, b) => a['item_name'].compareTo(b['item_name']));
-                          //         return GridView.builder(
-                          //           itemCount: items.length,
-                          //           physics: BouncingScrollPhysics(),
-                          //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          //             crossAxisCount: 2,
-                          //             crossAxisSpacing: 10.0,
-                          //             mainAxisSpacing: 15.0
-                          //           ),
-                          //           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          //           itemBuilder: (BuildContext context, int index){
-                          //             return Column(
-                          //               crossAxisAlignment: CrossAxisAlignment.start,
-                          //               children: [
-                          //                 Container(
-                          //                   height: MediaQuery.of(context).size.height * 0.17,
-                          //                   decoration: BoxDecoration(
-                          //                     color: primaryColor,
-                          //                     border: Border.all(),
-                          //                     borderRadius: BorderRadius.circular(10),
-                          //                     image: DecorationImage(image: AssetImage("assets/images/default_menu.png"), fit: BoxFit.cover)
-                          //                   ),
-                          //                 ),
-                          //                 SizedBox(height: 5,),
-                          //                 Padding(
-                          //                   padding: const EdgeInsets.only(left: 5.0),
-                          //                   child: SizedBox(child: Text(items[index]['item_name'], style: TextStyle(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis,)),
-                          //                 )
-                          //               ],
-                          //             );
-                          //           },
-                          //         );
-                          //       }
-                          //     } else {
-                          //       return Container(
-                          //         child: Center(
-                          //           child: Text("Loading..."),
-                          //         )
-                          //       );
-                          //     }
-                          //   }
-                          // )
                           FirebaseAnimatedList(
                               query: ref
                                   .child("Item")
@@ -216,7 +158,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
               );
             } else {
-              return CircularProgressIndicator();
+              return Container();
             }
           }),
     );
