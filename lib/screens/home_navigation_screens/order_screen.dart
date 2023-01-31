@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/order_screen/new_order_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -20,7 +21,11 @@ class _OrderScreenState extends State<OrderScreen> {
               width: MediaQuery.of(context).size.width * 0.8,
               height: 45,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => NewOrderScreen([]))
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: primaryColor,
                   shadowColor: Colors.transparent,
@@ -53,31 +58,6 @@ class _OrderScreenState extends State<OrderScreen> {
                   SizedBox(height: 5,),
                   Divider(thickness: 1, color: Colors.black,),
                   SizedBox(height: 10,),
-                  // Expanded(
-                  //   child: SizedBox(
-                  //     child: ListView.separated(
-                  //       physics: BouncingScrollPhysics(),
-                  //       itemBuilder: (context, index) {
-                  //         return Center(
-                  //           child: Container(
-                  //             width: MediaQuery.of(context).size.width * 0.95,
-                  //             height: 60,
-                  //             decoration: BoxDecoration(
-                  //               color: Colors.grey,
-                  //               borderRadius: BorderRadius.circular(5)
-                  //             ),
-                  //           ),
-                  //         );
-                  //       }, 
-                  //       separatorBuilder: (context, i) {
-                  //         return SizedBox(
-                  //           height: 15,
-                  //         );
-                  //       }, 
-                  //       itemCount: 15
-                  //     ),
-                  //   )
-                  // ) // listview order list
                   Expanded(
                     child: SizedBox(
                       child: GridView.builder(  
@@ -86,7 +66,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  
                             crossAxisCount: 2,  
                             crossAxisSpacing: 10.0,  
-                            mainAxisSpacing: 15.0  
+                            mainAxisSpacing: 15.0,
+                            childAspectRatio: 1.5
                         ),  
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         itemBuilder: (BuildContext context, int index){  
@@ -98,7 +79,6 @@ class _OrderScreenState extends State<OrderScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                textRow("Order Code", "1"),
                                 textRow("Table No", "12"),
                                 textRow("Time", "4:30PM"),
                                 textRow("Status", "Paid", text2Color: Colors.green),
