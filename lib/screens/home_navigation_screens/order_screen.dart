@@ -34,7 +34,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     borderRadius: BorderRadius.circular(10),
                   )
                 ),
-                child: Text("New Order", style: TextStyle(color: Colors.black),),
+                child: Text("New Order",),
               ),
             ),
           ),

@@ -95,8 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
           unselectedIconTheme: const IconThemeData(size: 15),
           type: BottomNavigationBarType.fixed,
           backgroundColor: primaryColor,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.lightBlue,
+          unselectedItemColor: Colors.white,
           items:  const [
             BottomNavigationBarItem(icon: Icon(Icons.notifications_active), label: 'Order'),
             BottomNavigationBarItem(icon: Icon(Icons.title), label: 'Table'),
@@ -106,8 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         appBar: AppBar(
-          leading: Icon(appBarIcon),
-          title: Text(appBarTitle, style: TextStyle(color: Colors.black, fontFamily: poppinFont, fontSize: 16),),
+          leading: Icon(appBarIcon, color: Colors.white,),
+          title: Text(appBarTitle, style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 15.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/order_screen/select_menu.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 
@@ -17,7 +18,11 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("New Order", style: TextStyle(color: Colors.black, fontFamily: poppinFont, fontSize: 16),),
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
+        title: Text("New Order", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
         centerTitle: true,
       ),
       body: Column(
@@ -34,10 +39,14 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                 height: 40,
                 width: 150,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => SelectMenuScreen())
+                    );
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(primaryColor),
-                    foregroundColor: MaterialStateProperty.all(Colors.black)
+                    foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   child: Text("Select Menu"),
                 ),
@@ -47,15 +56,38 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
           SizedBox(height: 15,),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
               child: Container(
+                width: MediaQuery.of(context).size.width * 0.95,
                 decoration: BoxDecoration(
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(10)
                 ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 5,),
+                    Text("Selected Menu", style: TextStyle(fontWeight: FontWeight.bold),),
+                    Divider(thickness: 0.5, color: Colors.black,)
+                  ],
+                ),
               ),
             ),
-          )
+          ),
+          Center(
+            child: SizedBox(
+              width: 100,
+              height: 40,
+              child: ElevatedButton(
+                onPressed: () {}, 
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(primaryColor)),
+                child: Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                )
+              ),
+            ),
+          ),
+          SizedBox(height: 20,)
         ],
       ),
     );

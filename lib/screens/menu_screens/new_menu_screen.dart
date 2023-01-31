@@ -36,7 +36,11 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("New Menu", style: TextStyle(color: Colors.black, fontFamily: poppinFont, fontSize: 16),),
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
+        title: Text("New Menu", style: TextStyle( fontFamily: poppinFont, fontSize: 16),),
       ),
       body: Column(
         children: [
@@ -69,7 +73,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                   backgroundColor: primaryColor,
                   radius: 50,
                   child: Center(
-                    child: Icon(Icons.camera_alt, color: Colors.black,),
+                    child: Icon(Icons.camera_alt, color: Colors.white,),
                   ),
                 ),
               ),
@@ -114,7 +118,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(primaryColor),
-                                  foregroundColor: MaterialStateProperty.all(Colors.black)
+                                  foregroundColor: MaterialStateProperty.all(Colors.white)
                                 ),
                                 onPressed: () {
                                   showDialog(
@@ -201,7 +205,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           });
                           Navigator.pop(context);
                         }, 
-                        child: Text("Create")
+                        child: Text("Create", style: TextStyle(color: Colors.white),)
                       ),
                     ),
                   )

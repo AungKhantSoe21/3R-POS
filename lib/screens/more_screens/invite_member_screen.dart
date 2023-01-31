@@ -18,9 +18,13 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
     final ref = FirebaseDatabase.instance.ref();
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
         title: Text(
           "Members",
-          style: TextStyle(fontFamily: poppinFont, fontSize: 16, color: Colors.black),
+          style: TextStyle(fontFamily: poppinFont, fontSize: 16, color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -30,7 +34,7 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
         backgroundColor: primaryColor,
         child: Icon(
           Icons.person_add,
-          color: Colors.black,
+          color: Colors.white,
           size: 18,
         ),
       ),

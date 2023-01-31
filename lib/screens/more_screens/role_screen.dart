@@ -21,10 +21,14 @@ class _RoleScreenState extends State<RoleScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
         title: Text(
           "Roles",
           style: TextStyle(
-              fontFamily: poppinFont, fontSize: 16, color: Colors.black),
+              fontFamily: poppinFont, fontSize: 16, color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -80,7 +84,7 @@ class _RoleScreenState extends State<RoleScreen> {
         backgroundColor: primaryColor,
         child: Icon(
           Icons.person_add,
-          color: Colors.black,
+          color: Colors.white,
           size: 18,
         ),
       ),

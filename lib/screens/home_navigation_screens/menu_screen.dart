@@ -17,16 +17,6 @@ class _MenuScreenState extends State<MenuScreen> {
   List items = [];
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -39,7 +29,7 @@ class _MenuScreenState extends State<MenuScreen> {
           children: [
             Icon(
               Icons.restaurant,
-              color: Colors.black,
+              color: Colors.white,
               size: 18,
             ),
             Positioned(
@@ -47,7 +37,7 @@ class _MenuScreenState extends State<MenuScreen> {
               bottom: 13,
               child: Icon(
                 Icons.add,
-                color: Colors.black,
+                color: Colors.white,
                 size: 14,
               ),
             ),

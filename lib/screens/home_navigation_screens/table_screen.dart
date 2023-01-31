@@ -49,9 +49,9 @@ class _TableScreenState extends State<TableScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add, size: 50,),
+                          Icon(Icons.add, size: 50, color: Colors.white,),
                           SizedBox(height: 5,),
-                          Text("New Table")
+                          Text("New Table", style: TextStyle(color: Colors.white),)
                         ],
                       ),
                     ),

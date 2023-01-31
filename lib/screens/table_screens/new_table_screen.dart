@@ -27,7 +27,11 @@ class _NewTableScreenState extends State<NewTableScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("New Table", style: TextStyle(color: Colors.black, fontFamily: poppinFont, fontSize: 16),),
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
+        title: Text("New Table", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
         centerTitle: true,
       ),
       body: Column(
@@ -67,7 +71,7 @@ class _NewTableScreenState extends State<NewTableScreen> {
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(primaryColor),
-                  foregroundColor: MaterialStateProperty.all(Colors.black)
+                  foregroundColor: MaterialStateProperty.all(Colors.white)
                 ),
                 onPressed: () async {
                   await ref.child("Tables").push().set({

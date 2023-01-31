@@ -29,7 +29,7 @@ class _ReportScreenState extends State<ReportScreen> {
                     borderRadius: BorderRadius.circular(10),
                   )
                 ),
-                child: Text("View Sale Reports", style: TextStyle(color: Colors.black),),
+                child: Text("View Sale Reports",),
               ),
             ),
           ),
@@ -48,7 +48,7 @@ class _ReportScreenState extends State<ReportScreen> {
                     borderRadius: BorderRadius.circular(10),
                   )
                 ),
-                child: Text("Generate Item Purchasing Patterns", style: TextStyle(color: Colors.black),),
+                child: Text("Generate Item Purchasing Patterns",),
               ),
             ),
           ),

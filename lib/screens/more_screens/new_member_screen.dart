@@ -22,10 +22,14 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
     final ref = FirebaseDatabase.instance.ref();
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {Navigator.pop(context);}, 
+          icon: Icon(Icons.arrow_back, color: Colors.white,)
+        ),
         title: Text(
           "Add Member",
           style: TextStyle(
-              fontFamily: poppinFont, fontSize: 16, color: Colors.black),
+              fontFamily: poppinFont, fontSize: 16, color: Colors.white),
         ),
       ),
       body: Column(
@@ -92,7 +96,7 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
                   });
                   Navigator.pop(context);
                 },
-                child: Text("Create"),
+                child: Text("Create", style: TextStyle(color: Colors.white),),
               ),
             ),
           )

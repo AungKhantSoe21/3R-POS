@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: textField(passwordController, "", hintText: "Enter password"),
+                child: textField(passwordController, "", hintText: "Enter password", obscureText: true),
               ),
             ),
             SizedBox(height: 15,),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   backgroundColor: MaterialStateProperty.all(primaryColor),
                   shadowColor: MaterialStateProperty.all(Colors.transparent)
                 ),
-                child: Text("Login", style: TextStyle(fontSize: 14, color: Colors.black),)
+                child: Text("Login", style: TextStyle(fontSize: 14, color: Colors.white),)
               ),
             )
           ]
