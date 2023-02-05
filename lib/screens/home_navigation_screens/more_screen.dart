@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r_pos/core/persistence/user_persistence.dart';
 import 'package:r_pos/screens/auth_screens/login_screen.dart';
+import 'package:r_pos/screens/more_screens/ingredient_screen.dart';
 import 'package:r_pos/screens/more_screens/invite_member_screen.dart';
 import 'package:r_pos/screens/more_screens/role_screen.dart';
 
@@ -45,6 +46,18 @@ class _MoreScreenState extends State<MoreScreen> {
               leading: Icon(Icons.admin_panel_settings, color: Colors.black,),
               title: Text(
               "Roles",
+                style: const TextStyle(fontSize: 13),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (builder) => IngredientScreen()));
+            },
+            child: ListTile(
+              leading: Icon(Icons.restaurant_sharp, color: Colors.black,),
+              title: Text(
+              "Ingredient",
                 style: const TextStyle(fontSize: 13),
               ),
             ),

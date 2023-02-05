@@ -5,15 +5,16 @@ import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/toast_message.dart';
 
-class RoleScreen extends StatefulWidget {
-  const RoleScreen({Key? key}) : super(key: key);
+class IngredientScreen extends StatefulWidget {
+  const IngredientScreen({Key? key}) : super(key: key);
 
   @override
-  State<RoleScreen> createState() => _RoleScreenState();
+  State<IngredientScreen> createState() => _IngredientScreenState();
 }
 
-class _RoleScreenState extends State<RoleScreen> {
-  final TextEditingController _roleName = TextEditingController();
+class _IngredientScreenState extends State<IngredientScreen> {
+  final TextEditingController _ingredient = TextEditingController();
+  final TextEditingController _ingredientPrice = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _RoleScreenState extends State<RoleScreen> {
           icon: Icon(Icons.arrow_back, color: Colors.white,)
         ),
         title: Text(
-          "Roles",
+          "Ingredient",
           style: TextStyle(
               fontFamily: poppinFont, fontSize: 16, color: Colors.white),
         ),
@@ -38,23 +39,26 @@ class _RoleScreenState extends State<RoleScreen> {
             barrierDismissible: false,
             builder: (context) => AlertDialog(
               title: Text(
-                "New Role",
+                "New Ingredient",
                 style: TextStyle(fontSize: 12),
               ),
               content: SizedBox(
-                height: 100,
+                height: 200,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    labelText("Role Name", padding: 10),
-                    textField("Enter role name", double.infinity, _roleName, TextInputType.name, "")
+                    labelText("Ingredient Name", padding: 10),
+                    textField("Enter ingredient name", double.infinity, _ingredient, TextInputType.name, ""),
+                    labelText("Ingredient Price", padding: 10),
+                    textField("Enter ingredient price", double.infinity, _ingredientPrice, TextInputType.number, "")
                   ],
                 ),
               ),
               actions: [
                 TextButton(
                   onPressed: () {
-                    _roleName.text = "";
+                    _ingredient.text = "";
+                    _ingredientPrice.text = "";
                     Navigator.pop(context);
                   },
                   child: Text(
@@ -65,12 +69,16 @@ class _RoleScreenState extends State<RoleScreen> {
                 TextButton(
                   onPressed: () async {
                     await ref
-                        .child("Role")
+                        .child("Ingredient")
                         .push()
-                        .set({"role_name": _roleName.text}).asStream();
-                    _roleName.text = "";
+                        .set({
+                          "ingredient_name": _ingredient.text,
+                          "ingredient_price": _ingredientPrice.text 
+                        }).asStream();
+                    _ingredient.text = "";
+                    _ingredientPrice.text = "";
                     Navigator.pop(context);
-                    toastMessage("Role created", txtColor: Colors.green);
+                    toastMessage("Ingredient created", txtColor: Colors.green);
                   },
                   child: Text(
                     "Create",
@@ -82,23 +90,44 @@ class _RoleScreenState extends State<RoleScreen> {
           );
         },
         backgroundColor: primaryColor,
-        child: Icon(
-          Icons.person_add,
-          color: Colors.white,
-          size: 18,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Icon(
+              Icons.restaurant,
+              color: Colors.white,
+              size: 18,
+            ),
+            Positioned(
+              left: 12,
+              bottom: 13,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 14,
+              ),
+            ),
+          ],
         ),
       ),
       body: FirebaseAnimatedList(
-        query: ref.child("Role"), 
+        query: ref.child("Ingredient"), 
         itemBuilder: (context, snapshot, a, i) {
           Map mydata = snapshot.value as Map;
           mydata['key'] = snapshot.key;
           return ListTile(
-            leading: Icon(Icons.admin_panel_settings),
-            title: Text(mydata['role_name']),
+            leading: Icon(Icons.restaurant_sharp),
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(mydata['ingredient_name']),
+                Text(mydata['ingredient_price'] + " Ks"),
+              ],
+            ),
             trailing: IconButton(
               onPressed: () {
-                ref.child("Role").child(mydata['key']).remove();
+                ref.child("ingredient").child(mydata['key']).remove();
               }, 
               icon: Icon(Icons.delete, color: Colors.red,)
             ),
