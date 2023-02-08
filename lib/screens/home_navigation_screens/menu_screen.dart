@@ -3,8 +3,11 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:r_pos/screens/menu_screens/new_menu_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
+import 'package:r_pos/widgets/loader.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -52,14 +55,14 @@ class _MenuScreenState extends State<MenuScreen> {
             if (snapshot.hasData) {
               final map = snapshot.data.snapshot.value;
               categoryList = map.values.toList();
-              categoryList.sort(
-                  (a, b) => a['category_name'].compareTo(b['category_name']));
+              categoryList.sort((a, b) => a['category_name'].compareTo(b['category_name']));
               return DefaultTabController(
                 length: categoryList.length,
                 child: Column(
                   children: [
                     TabBar(
                       isScrollable: true,
+                      indicatorSize: TabBarIndicatorSize.label,
                       indicatorColor: primaryColor,
                       tabs: [
                         for (int i = 0; i < categoryList.length; i++)
@@ -82,7 +85,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               itemBuilder: (context, snapshot, animation, index) {
                                 Map mydata = snapshot.value as Map;
                                 mydata['key'] = snapshot.key;
-
+                                mydata.keys.toList()..sort();
                                 if(snapshot.hasChild("image_path") != true) {
                                   return Center(
                                     child: Text("No menu for this category!"),
@@ -94,19 +97,22 @@ class _MenuScreenState extends State<MenuScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          width: MediaQuery.of(context).size.width * 0.45,
+                                          width: MediaQuery.of(context).size.width * 0.30,
                                           height: 100,
                                           decoration: BoxDecoration(
                                             color: primaryColor,
                                             border: Border.all(),
                                             borderRadius: BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                              image: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
-                                              ? NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
-                                              : NetworkImage(mydata['image_path']),
-                                              fit: BoxFit.cover,
-                                            ),
                                           ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
+                                              imageUrl: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
+                                              ? "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f"
+                                              : mydata['image_path'],
+                                              placeholder: (context, s) => Loader(Colors.white, 2, size: 15),
+                                            ),
+                                          )
                                         ),
                                         SizedBox(
                                           height: 5,
@@ -114,6 +120,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                         Padding(
                                           padding: const EdgeInsets.only(left: 15.0),
                                           child: SizedBox(
+                                            width: MediaQuery.of(context).size.width * 0.60,
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
@@ -121,7 +128,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                                   mydata['item_name'],
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 18
+                                                    fontSize: 14
                                                   ),
                                                   maxLines: 2,
                                                   overflow: TextOverflow.ellipsis,
@@ -130,7 +137,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                                 Text(
                                                   mydata['item_price'] + " Ks",
                                                   style: TextStyle(
-                                                    fontSize: 14
+                                                    fontSize: 12
                                                   ),
                                                   maxLines: 1,
                                                   overflow: TextOverflow.ellipsis,

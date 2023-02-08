@@ -1,6 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:r_pos/core/persistence/user_persistence.dart';
 import 'package:r_pos/screens/auth_screens/login_screen.dart';
@@ -28,12 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
     username = getUserPreference.toString() == "null" ? '' :  getUserPreference[0];
     await Future.delayed(Duration(seconds: 3));
     if(username == '') {
-      log("message1");
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => LoginScreen())
       );
     } else {
-      log("message");
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => HomeScreen())
       );
@@ -48,13 +43,14 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             CircleAvatar(
-              radius: 30,
+              radius: 70,
               backgroundColor: Colors.black,
               child: CircleAvatar(
-                radius: 29,
-                backgroundImage: AssetImage("assets/images/3R-POS.jpg"),
+                radius: 69.5,
+                backgroundImage: AssetImage("assets/images/ER-POS ICON.jpg"),
               ),
             ),
+            SizedBox(height: 15,),
             Text("3R-POS", style: TextStyle(fontSize: 25),)
           ],
         ),

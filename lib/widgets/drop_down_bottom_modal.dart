@@ -35,6 +35,7 @@ dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownIt
             if(snapshot.hasData) {
               final map = snapshot.data.snapshot.value;
               List dropList = map.values.toList();
+              dropList.sort((a, b) => a[dropListItemName].compareTo(b[dropListItemName]));
               return SizedBox(
                 height: height,
                 child: ListView(

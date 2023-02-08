@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/order_screen/new_order_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -14,6 +15,8 @@ class OrderScreen extends StatefulWidget {
 class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
+    final ref = FirebaseDatabase.instance.ref().child("Order");
+    
     return Scaffold(
       body: Column(
         children: [
@@ -62,32 +65,47 @@ class _OrderScreenState extends State<OrderScreen> {
                   SizedBox(height: 10,),
                   Expanded(
                     child: SizedBox(
-                      child: GridView.builder(  
-                        itemCount: 10,  
-                        physics: BouncingScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  
-                            crossAxisCount: 2,  
-                            crossAxisSpacing: 10.0,  
-                            mainAxisSpacing: 15.0,
-                            childAspectRatio: 1.5
-                        ),  
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        itemBuilder: (BuildContext context, int index){  
-                          return Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                textRow("Table No", "12"),
-                                textRow("Time", "4:30PM"),
-                                textRow("Status", "Paid", text2Color: Colors.green),
-                              ],
-                            ),
-                          );  
-                        },  
+                      child: StreamBuilder(
+                        stream: ref.onValue,
+                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          if(snapshot.hasData) {
+                            final map = snapshot.data.snapshot.value;
+                            List order = map.values.toList();
+                            return GridView.builder(  
+                              itemCount: order.length,  
+                              physics: BouncingScrollPhysics(),
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  
+                                  crossAxisCount: 2,  
+                                  crossAxisSpacing: 10.0,  
+                                  mainAxisSpacing: 15.0,
+                                  childAspectRatio: 1.5
+                              ),  
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              itemBuilder: (BuildContext context, int index){  
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      textRow("Table No", order[index]['table_no']),
+                                      textRow(
+                                        "Time", 
+                                        "${(DateTime.parse(order[index]['order_time'].toString()).hour).toString().length == 1 ? "0" + (DateTime.parse(order[index]['order_time'].toString()).hour).toString() : (DateTime.parse(order[index]['order_time'].toString()).hour).toString()}" + " : " + 
+                                        "${(DateTime.parse(order[index]['order_time'].toString()).minute).toString().length == 1 ? "0" + (DateTime.parse(order[index]['order_time'].toString()).minute).toString() : (DateTime.parse(order[index]['order_time'].toString()).minute).toString()}"
+                                      ),
+                                      textRow("Status", order[index]['order_status'], text2Color: order[index]['order_status'] == "Confirm" ? Colors.green : Colors.yellow),
+                                    ],
+                                  ),
+                                );  
+                              },  
+                            );
+                          } else {
+                            return Container();
+                          }
+                        }
                       ),
                     ),
                   )

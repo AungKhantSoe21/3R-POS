@@ -1,10 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/drop_down_bottom_modal.dart';
+import 'package:r_pos/widgets/loader.dart';
 import 'package:r_pos/widgets/toast_message.dart';
+
+class SelectedMenuList {
+  static List selectedMenuCard = [];
+}
 
 class SelectMenuScreen extends StatefulWidget {
   const SelectMenuScreen({Key? key}) : super(key: key);
@@ -22,8 +28,17 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
   final TextEditingController _description = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    if(SelectedMenuList.selectedMenuCard.isNotEmpty) {
+      setState(() {
+        selectedMenuCard = SelectedMenuList.selectedMenuCard;
+      });
+    }
+  }
+  @override
   Widget build(BuildContext context) {
-  final ref = FirebaseDatabase.instance.ref();
+    final ref = FirebaseDatabase.instance.ref();
     final que = ref.child("Ingredient");
     return Scaffold(
       appBar: AppBar(
@@ -51,6 +66,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                           TabBar(
                             isScrollable: true,
                             indicatorColor: primaryColor,
+                            indicatorSize: TabBarIndicatorSize.label,
                             labelColor: Colors.black,
                             unselectedLabelColor: Colors.black,
                             tabs: [
@@ -129,19 +145,22 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  width: MediaQuery.of(context).size.width * 0.45,
+                                                  width: MediaQuery.of(context).size.width * 0.30,
                                                   height: 100,
                                                   decoration: BoxDecoration(
                                                     color: primaryColor,
                                                     border: Border.all(),
                                                     borderRadius: BorderRadius.circular(10),
-                                                    image: DecorationImage(
-                                                      image: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
-                                                      ? const NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
-                                                      : NetworkImage(mydata['image_path']),
-                                                      fit: BoxFit.cover,
-                                                    ),
                                                   ),
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
+                                                      ? "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f"
+                                                      : mydata['image_path'],
+                                                      placeholder: (context, s) => Loader(Colors.white, 2, size: 15),
+                                                    ),
+                                                  )
                                                 ),
                                                 const SizedBox(
                                                   height: 5,
@@ -149,6 +168,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                 Padding(
                                                   padding: const EdgeInsets.only(left: 15.0),
                                                   child: SizedBox(
+                                                    width: MediaQuery.of(context).size.width * 0.60,
                                                     child: Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
@@ -156,7 +176,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                           mydata['item_name'],
                                                           style: const TextStyle(
                                                             fontWeight: FontWeight.bold,
-                                                            fontSize: 18
+                                                            fontSize: 14
                                                           ),
                                                           maxLines: 2,
                                                           overflow: TextOverflow.ellipsis,
@@ -165,7 +185,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                         Text(
                                                           mydata['item_price'] + " Ks",
                                                           style: const TextStyle(
-                                                            fontSize: 14
+                                                            fontSize: 12
                                                           ),
                                                           maxLines: 1,
                                                           overflow: TextOverflow.ellipsis,
@@ -506,7 +526,12 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                       height: 60,
                       child: ElevatedButton(
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
-                        onPressed: () {}, 
+                        onPressed: () {
+                          setState(() {
+                            SelectedMenuList.selectedMenuCard = selectedMenuCard;
+                          });
+                          Navigator.pop(context);
+                        }, 
                         child: const Center(child: Icon(Icons.add, size:  30, color: Colors.black,))
                       ),
                     ),
