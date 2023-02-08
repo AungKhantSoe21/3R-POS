@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +18,8 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
   List items = [];
   List selectedMenuCard = [];
 
-  TextEditingController _ingredient = TextEditingController();
-  TextEditingController _description = TextEditingController();
+  final TextEditingController _ingredient = TextEditingController();
+  final TextEditingController _description = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,9 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text("Select Menu", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
+        title: const Text("Select Menu", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
         centerTitle: true,
       ),
       body: Column(
@@ -79,7 +77,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                       mydata['key'] = snapshot.key;
           
                                       if(snapshot.hasChild("image_path") != true) {
-                                        return Center(
+                                        return const Center(
                                           child: Text("No menu for this category!"),
                                         );
                                       } else {
@@ -139,13 +137,13 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                     borderRadius: BorderRadius.circular(10),
                                                     image: DecorationImage(
                                                       image: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
-                                                      ? NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
+                                                      ? const NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
                                                       : NetworkImage(mydata['image_path']),
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Padding(
@@ -156,17 +154,17 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                       children: [
                                                         Text(
                                                           mydata['item_name'],
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontWeight: FontWeight.bold,
                                                             fontSize: 18
                                                           ),
                                                           maxLines: 2,
                                                           overflow: TextOverflow.ellipsis,
                                                         ),
-                                                        SizedBox(height: 10,),
+                                                        const SizedBox(height: 10,),
                                                         Text(
                                                           mydata['item_price'] + " Ks",
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontSize: 14
                                                           ),
                                                           maxLines: 1,
@@ -224,20 +222,20 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                   width: 300,
                                                   child: Column(
                                                     children: [
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 35,
                                                         child: Center(child: Text("Edit Selected Menu"))
                                                       ),
                                                       Expanded(
                                                         child: data.isEmpty ? Container() : ListView.separated(
-                                                          physics: BouncingScrollPhysics(),
+                                                          physics: const BouncingScrollPhysics(),
                                                           itemBuilder: (context, j) {
                                                             return SizedBox(
                                                               width: 200,
                                                               height: 60,
                                                               child: Row(
                                                                 children: [
-                                                                  SizedBox(width: 10,),
+                                                                  const SizedBox(width: 10,),
                                                                   Container(
                                                                     width: 60,
                                                                     height: 60,
@@ -269,7 +267,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                   child: Text(data[j]['name'], maxLines: 1, overflow: TextOverflow.ellipsis,)
                                                                                 ),
                                                                               ),
-                                                                              Text(" | "),
+                                                                              const Text(" | "),
                                                                               Expanded(
                                                                                 child: SizedBox(
                                                                                   child: Text(data[j]['ingredient'].isEmpty ? "No Ingredient" : data[j]['ingredient'], maxLines: 1, overflow: TextOverflow.ellipsis,)
@@ -286,7 +284,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                   child: Text(data[j]['price'] + " Ks", maxLines: 1, overflow: TextOverflow.ellipsis,)
                                                                                 ),
                                                                               ),
-                                                                              Text(" | "),
+                                                                              const Text(" | "),
                                                                               Expanded(
                                                                                 child: SizedBox(
                                                                                   child: Text(data[j]['description'].isEmpty ? "No Description" : data[j]['description'], maxLines: 1, overflow: TextOverflow.ellipsis,)
@@ -303,7 +301,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                       PopupMenuItem( 
                                                                         value: 1, 
                                                                         child: Row( 
-                                                                          children: [
+                                                                          children: const [
                                                                             Icon(Icons.edit),
                                                                             SizedBox(
                                                                               width: 10,
@@ -315,7 +313,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                       PopupMenuItem(
                                                                         value: 2,
                                                                         child: Row(
-                                                                          children: [
+                                                                          children: const [
                                                                             Icon(Icons.delete),
                                                                             SizedBox(
                                                                               width: 10,
@@ -335,7 +333,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                           context: context, 
                                                                           barrierDismissible: false,
                                                                           builder: (context) => AlertDialog(
-                                                                            title: Text("Update", style: TextStyle(fontSize: 12),),
+                                                                            title: const Text("Update", style: TextStyle(fontSize: 12),),
                                                                             content: SizedBox(
                                                                               height: 200,
                                                                               child: Column(
@@ -370,8 +368,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                     "Description", 
                                                                                     double.infinity, 
                                                                                     _description, 
-                                                                                    TextInputType.name,
-                                                                                    ""
+                                                                                    TextInputType.name,                                                                           ""
                                                                                   )
                                                                                 ],
                                                                               ),
@@ -381,7 +378,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                   _ingredient.text = "";
                                                                                   _description.text = "";
                                                                                   Navigator.pop(context);
-                                                                                }, child: Text("Cancel", style: TextStyle(color: Colors.red),),),  
+                                                                                }, child: const Text("Cancel", style: TextStyle(color: Colors.red),),),  
                                                                                 TextButton(onPressed: () async {
                                                                                   setState(() {
                                                                                     data[j]['ingredient'] = _ingredient.text;
@@ -391,7 +388,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                   _description.text = "";
                                                                                   Navigator.pop(context);
                                                                                   toastMessage("Update Successful", txtColor: Colors.green);
-                                                                                }, child: Text("Update", style: TextStyle(color: Colors.green),),)  
+                                                                                }, child: const Text("Update", style: TextStyle(color: Colors.green),),)  
                                                                             ]
                                                                           )
                                                                         );
@@ -414,13 +411,13 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                       }
                                                                     },
                                                                   ),
-                                                                  SizedBox(width: 10,)
+                                                                  const SizedBox(width: 10,)
                                                                 ],
                                                               ),
                                                             );
                                                           }, 
                                                           separatorBuilder: (context, index) {
-                                                            return SizedBox(
+                                                            return const SizedBox(
                                                               height: 10,
                                                             );
                                                           }, 
@@ -440,7 +437,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                               onPressed: () {
                                                                 Navigator.pop(context);
                                                               }, 
-                                                              child: Text("OK")
+                                                              child: const Text("OK")
                                                             ),
                                                           )
                                                         )
@@ -461,7 +458,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                           borderRadius: BorderRadius.circular(5),
                                           image: DecorationImage(
                                             image: selectedMenuCard[i]['data'][0]['image'].toString() == "null" || selectedMenuCard[i]['data'][0]['image'].isEmpty == true
-                                                  ? NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
+                                                  ? const NetworkImage("https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f")
                                                   : NetworkImage(selectedMenuCard[i]['data'][0]['image']),
                                             fit: BoxFit.cover
                                           )
@@ -474,7 +471,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                         selectedMenuCard[i]['data'][0]['name'], 
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(fontSize: 10,color: Colors.white),
+                                        style: const TextStyle(fontSize: 10,color: Colors.white),
                                       )
                                     )
                                   ],
@@ -489,31 +486,31 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                   child: CircleAvatar(
                                     radius: 10,
                                     backgroundColor: Colors.white,
-                                    child: Center(child: Text(selectedMenuCard[i]['data'].length.toString(), style: TextStyle(fontSize: 10)))
+                                    child: Center(child: Text(selectedMenuCard[i]['data'].length.toString(), style: const TextStyle(fontSize: 10)))
                                   ),
                                 )
                               )
                             ],
                           );
                         }, 
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         separatorBuilder: (context, i) {
-                          return SizedBox(width: 10,);
+                          return const SizedBox(width: 10,);
                         }, 
                         itemCount: selectedMenuCard.length
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     SizedBox(
                       width: 60,
                       height: 60,
                       child: ElevatedButton(
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
                         onPressed: () {}, 
-                        child: Center(child: Icon(Icons.add, size:  30, color: Colors.black,))
+                        child: const Center(child: Icon(Icons.add, size:  30, color: Colors.black,))
                       ),
                     ),
-                    SizedBox(width: 10,)
+                    const SizedBox(width: 10,)
                   ],
                 ),
               ),
@@ -523,39 +520,39 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
     );
   }
 
-  Widget labelText(String _text, {double padding = 30}) {
+  Widget labelText(String text, {double padding = 30}) {
     return Padding(
       padding: EdgeInsets.only(left: padding, bottom: 5),
       child: Text(
-        _text,
-        style: TextStyle(
+        text,
+        style: const TextStyle(
           fontSize: 12
         ),
       ),
     );
   }
 
-  Widget textField(String _hintText, double _width, TextEditingController _controller, TextInputType _textInputType, String _error) {
+  Widget textField(String hintText, double width, TextEditingController controller, TextInputType textInputType, String error) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
+            errorText: error,
+            hintText: hintText,
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10)
             ),
             errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 1),
+            borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

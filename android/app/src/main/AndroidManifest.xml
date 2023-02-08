@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.r_pos">
    <application
-        android:label="r_pos"
+        android:label="3R-POS"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

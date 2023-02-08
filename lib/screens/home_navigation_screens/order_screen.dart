@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/order_screen/new_order_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -23,7 +25,7 @@ class _OrderScreenState extends State<OrderScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => NewOrderScreen([]))
+                    MaterialPageRoute(builder: (_) => NewOrderScreen(const []))
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -105,7 +107,7 @@ class _OrderScreenState extends State<OrderScreen> {
           padding: const EdgeInsets.only(left: 15),
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.22,
-            child: Text("$text1")
+            child: Text(text1)
           ),
         ),
         SizedBox(
@@ -114,7 +116,7 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.15,
-          child: Text("$text2", maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: text2Color))
+          child: Text(text2, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: text2Color))
         )
       ],
     );

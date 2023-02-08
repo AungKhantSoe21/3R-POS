@@ -24,9 +24,9 @@ class _IngredientScreenState extends State<IngredientScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text(
+        title: const Text(
           "Ingredient",
           style: TextStyle(
               fontFamily: poppinFont, fontSize: 16, color: Colors.white),
@@ -38,7 +38,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
             context: context,
             barrierDismissible: false,
             builder: (context) => AlertDialog(
-              title: Text(
+              title: const Text(
                 "New Ingredient",
                 style: TextStyle(fontSize: 12),
               ),
@@ -61,14 +61,14 @@ class _IngredientScreenState extends State<IngredientScreen> {
                     _ingredientPrice.text = "";
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     "Cancel",
                     style: TextStyle(color: Colors.red),
                   ),
                 ),
                 TextButton(
                   onPressed: () async {
-                    await ref
+                    ref
                         .child("Ingredient")
                         .push()
                         .set({
@@ -80,7 +80,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
                     Navigator.pop(context);
                     toastMessage("Ingredient created", txtColor: Colors.green);
                   },
-                  child: Text(
+                  child: const Text(
                     "Create",
                     style: TextStyle(color: Colors.green),
                   ),
@@ -92,7 +92,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
         backgroundColor: primaryColor,
         child: Stack(
           clipBehavior: Clip.none,
-          children: [
+          children: const [
             Icon(
               Icons.restaurant,
               color: Colors.white,
@@ -116,7 +116,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
           Map mydata = snapshot.value as Map;
           mydata['key'] = snapshot.key;
           return ListTile(
-            leading: Icon(Icons.restaurant_sharp),
+            leading: const Icon(Icons.restaurant_sharp),
             title: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +129,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
               onPressed: () {
                 ref.child("ingredient").child(mydata['key']).remove();
               }, 
-              icon: Icon(Icons.delete, color: Colors.red,)
+              icon: const Icon(Icons.delete, color: Colors.red,)
             ),
           );
         }
@@ -137,42 +137,42 @@ class _IngredientScreenState extends State<IngredientScreen> {
     );
   }
 
-  Widget labelText(String _text, {double padding = 30}) {
+  Widget labelText(String text, {double padding = 30}) {
     return Padding(
       padding: EdgeInsets.only(left: padding, bottom: 5),
       child: Text(
-        _text,
-        style: TextStyle(fontSize: 12),
+        text,
+        style: const TextStyle(fontSize: 12),
       ),
     );
   }
 
   Widget textField(
-      String _hintText,
-      double _width,
-      TextEditingController _controller,
-      TextInputType _textInputType,
-      String _error) {
+      String hintText,
+      double width,
+      TextEditingController controller,
+      TextInputType textInputType,
+      String error) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
-            hintStyle: TextStyle(fontSize: 12),
+            errorText: error,
+            hintText: hintText,
+            hintStyle: const TextStyle(fontSize: 12),
             focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 1),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10)),
             errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

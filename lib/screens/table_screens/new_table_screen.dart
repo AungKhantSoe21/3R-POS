@@ -29,21 +29,21 @@ class _NewTableScreenState extends State<NewTableScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text("New Table", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
+        title: const Text("New Table", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
         centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 25,),
+          const SizedBox(height: 25,),
           labelText("Table No"),
           textField("Enter table no", MediaQuery.of(context).size.width * 0.85, _tableNo, TextInputType.name, ""),
-          SizedBox(height: 5,),
+          const SizedBox(height: 5,),
           labelText("Customer Capacity"),
           textField("Enter capable customer quantity", MediaQuery.of(context).size.width * 0.85, _cusCapacity, TextInputType.number, ""),
-          SizedBox(height: 5,),
+          const SizedBox(height: 5,),
           labelText("Table Shape"),
           InkWell(
             onTap: () async {
@@ -63,7 +63,7 @@ class _NewTableScreenState extends State<NewTableScreen> {
               child: textField("Choose table shape", MediaQuery.of(context).size.width * 0.85, _tableShape, TextInputType.name, "")
             ),
           ),
-          SizedBox(height: 5,),
+          const SizedBox(height: 5,),
           Center(
             child: SizedBox(
               width: 100,
@@ -74,14 +74,14 @@ class _NewTableScreenState extends State<NewTableScreen> {
                   foregroundColor: MaterialStateProperty.all(Colors.white)
                 ),
                 onPressed: () async {
-                  await ref.child("Tables").push().set({
+                  ref.child("Tables").push().set({
                     "table_no" : _tableNo.text,
                     "customer_capacity" : int.parse(_cusCapacity.text),
                     "table_shape" : _tableShape.text
                   }).asStream();
                   Navigator.pop(context);
                 }, 
-                child: Text("Create")
+                child: const Text("Create")
               ),
             ),
           )
@@ -90,36 +90,36 @@ class _NewTableScreenState extends State<NewTableScreen> {
     );
   }
 
-  Widget labelText(String _text) {
+  Widget labelText(String text) {
     return Padding(
       padding: const EdgeInsets.only(left: 35.0, bottom: 5),
       child: Text(
-        _text,
+        text,
       ),
     );
   }
 
-  Widget textField(String _hintText, double _width, TextEditingController _controller, TextInputType _textInputType, String _error) {
+  Widget textField(String hintText, double width, TextEditingController controller, TextInputType textInputType, String error) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
+            errorText: error,
+            hintText: hintText,
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10)
             ),
             errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 1),
+            borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

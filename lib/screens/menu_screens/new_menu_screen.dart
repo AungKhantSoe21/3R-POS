@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -38,13 +40,13 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text("New Menu", style: TextStyle( fontFamily: poppinFont, fontSize: 16),),
+        title: const Text("New Menu", style: TextStyle( fontFamily: poppinFont, fontSize: 16),),
       ),
       body: Column(
         children: [
-          SizedBox(height: 15,),
+          const SizedBox(height: 15,),
           if(!isKeyboard)
           SizedBox(
             height: 130,
@@ -66,7 +68,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                     backgroundImage: FileImage(image!),
                   ),
               )
-              : CircleAvatar(
+              : const CircleAvatar(
                 radius: 52,
                 backgroundColor: Colors.black,
                 child: CircleAvatar(
@@ -125,7 +127,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                     context: context, 
                                     barrierDismissible: false,
                                     builder: (context) => AlertDialog(
-                                      title: Text("New Category", style: TextStyle(fontSize: 12),),
+                                      title: const Text("New Category", style: TextStyle(fontSize: 12),),
                                       content: SizedBox(
                                         height: 100,
                                         child: Column(
@@ -146,20 +148,20 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                           TextButton(onPressed: () {
                                             _categoryName.text = "";
                                             Navigator.pop(context);
-                                          }, child: Text("Cancel", style: TextStyle(color: Colors.red),),),  
+                                          }, child: const Text("Cancel", style: TextStyle(color: Colors.red),),),  
                                           TextButton(onPressed: () async {
-                                            await ref.child("Category").push().set({
+                                            ref.child("Category").push().set({
                                               "category_name" : _categoryName.text
                                             }).asStream();
                                             _categoryName.text = "";
                                             Navigator.pop(context);
                                             toastMessage("Category created", txtColor: Colors.green);
-                                          }, child: Text("Create", style: TextStyle(color: Colors.green),),)  
+                                          }, child: const Text("Create", style: TextStyle(color: Colors.green),),)  
                                       ]
                                     )
                                   );
                                 },
-                                child: Center(child: Icon(Icons.add)),
+                                child: const Center(child: Icon(Icons.add)),
                               )
                             ),
                           )
@@ -205,7 +207,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           });
                           Navigator.pop(context);
                         }, 
-                        child: Text("Create", style: TextStyle(color: Colors.white),)
+                        child: const Text("Create", style: TextStyle(color: Colors.white),)
                       ),
                     ),
                   )
@@ -218,40 +220,40 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
     );
   }
 
-  Widget labelText(String _text, {double padding = 30}) {
+  Widget labelText(String text, {double padding = 30}) {
     return Padding(
       padding: EdgeInsets.only(left: padding, bottom: 5),
       child: Text(
-        _text,
-        style: TextStyle(
+        text,
+        style: const TextStyle(
           fontSize: 12
         ),
       ),
     );
   }
 
-  Widget textField(String _hintText, double _width, TextEditingController _controller, TextInputType _textInputType, String _error) {
+  Widget textField(String hintText, double width, TextEditingController controller, TextInputType textInputType, String error) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
-            hintStyle: TextStyle(fontSize: 12),
+            errorText: error,
+            hintText: hintText,
+            hintStyle: const TextStyle(fontSize: 12),
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10)
             ),
             errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 1),
+            borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
@@ -276,7 +278,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
               Navigator.pop(context);
             },
             child: Column(
-              children: [
+              children: const [
                 Icon(Icons.camera_alt_outlined),
                 SizedBox(
                   height: 10,
@@ -292,7 +294,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
               Navigator.pop(context);
             },
             child: Column(
-              children: [
+              children: const [
                 Icon(Icons.photo_outlined),
                 SizedBox(
                   height: 10,

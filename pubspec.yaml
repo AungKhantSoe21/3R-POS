@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_native_splash: ^2.2.4
   shared_preferences: ^2.0.15
   fluttertoast: ^8.0.9
   image_picker: ^0.8.5+3
@@ -45,11 +44,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-flutter_native_splash:
-  color: "#1C1364"
-  image: assets/images/logo.png
-  fullscreen: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

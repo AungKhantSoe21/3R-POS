@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -20,19 +22,19 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text(
+        title: const Text(
           "Members",
           style: TextStyle(fontFamily: poppinFont, fontSize: 16, color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (builder) => NewMemberScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (builder) => const NewMemberScreen()));
         },
         backgroundColor: primaryColor,
-        child: Icon(
+        child: const Icon(
           Icons.person_add,
           color: Colors.white,
           size: 18,
@@ -66,7 +68,7 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
                           padding: const EdgeInsets.only(right: 20.0),
                           child: IconButton(
                             onPressed: () {}, 
-                            icon: Icon(Icons.edit, color: Colors.greenAccent, size: 20,)
+                            icon: const Icon(Icons.edit, color: Colors.greenAccent, size: 20,)
                           ),
                         ),
                       ],
@@ -81,7 +83,7 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
                             onPressed: () {
                               ref.child("User").child(mydata['key']).remove();
                             }, 
-                            icon: Icon(Icons.delete, color: Colors.red, size: 20,)
+                            icon: const Icon(Icons.delete, color: Colors.red, size: 20,)
                           ),
                         ),
                       ],

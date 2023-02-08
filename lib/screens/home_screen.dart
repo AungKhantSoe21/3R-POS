@@ -107,10 +107,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         appBar: AppBar(
           leading: Icon(appBarIcon, color: Colors.white,),
-          title: Text(appBarTitle, style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
-          actions: [
+          title: Text(appBarTitle, style: const TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
+          actions: const [
             Padding(
-              padding: const EdgeInsets.only(right: 15.0),
+              padding: EdgeInsets.only(right: 15.0),
               child: CircleAvatar(
                 radius: 21,
                 backgroundColor: Colors.black,

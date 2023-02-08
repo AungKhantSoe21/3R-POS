@@ -25,19 +25,19 @@ class _TableScreenState extends State<TableScreen> {
             tables.sort((a, b) => a['table_no'].compareTo(b['table_no']));
             return GridView.builder(
               itemCount: tables.length + 1,
-              physics: BouncingScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 15.0,
               ),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               itemBuilder: (BuildContext context, int index) {
                 if(index == tables.length) {
                   return InkWell(
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => NewTableScreen())
+                        MaterialPageRoute(builder: (_) => const NewTableScreen())
                       );
                     },
                     child: Container(
@@ -48,7 +48,7 @@ class _TableScreenState extends State<TableScreen> {
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Icon(Icons.add, size: 50, color: Colors.white,),
                           SizedBox(height: 5,),
                           Text("New Table", style: TextStyle(color: Colors.white),)
@@ -101,12 +101,12 @@ class _TableScreenState extends State<TableScreen> {
             child: Text(text1),
           ),
         ),
-        SizedBox(width: 8, child: Text(":")),
+        const SizedBox(width: 8, child: Text(":")),
         if(!iconOn)
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.1,
           child: Text(
-            "$text2",
+            text2,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: text2Color),

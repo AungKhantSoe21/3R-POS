@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:r_pos/widgets/input_form_style.dart';
 
-Widget textField(TextEditingController _controller, String _errMessage, {String hintText = "", bool obscureText = false}) {
+Widget textField(TextEditingController controller, String errMessage, {String hintText = "", bool obscureText = false}) {
     return TextFormField(
-      controller: _controller,
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         focusedBorder: borderStyle(),
@@ -11,7 +11,7 @@ Widget textField(TextEditingController _controller, String _errMessage, {String 
         enabledBorder: borderStyle(),
         errorBorder: borderStyle(),
         focusedErrorBorder: borderStyle(),
-        errorText: _errMessage,
+        errorText: errMessage,
         errorStyle: errorTextStyle(),
         hintText: hintText,
         hintStyle: hintStyle()

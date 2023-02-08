@@ -23,9 +23,9 @@ class _RoleScreenState extends State<RoleScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text(
+        title: const Text(
           "Roles",
           style: TextStyle(
               fontFamily: poppinFont, fontSize: 16, color: Colors.white),
@@ -37,7 +37,7 @@ class _RoleScreenState extends State<RoleScreen> {
             context: context,
             barrierDismissible: false,
             builder: (context) => AlertDialog(
-              title: Text(
+              title: const Text(
                 "New Role",
                 style: TextStyle(fontSize: 12),
               ),
@@ -57,14 +57,14 @@ class _RoleScreenState extends State<RoleScreen> {
                     _roleName.text = "";
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     "Cancel",
                     style: TextStyle(color: Colors.red),
                   ),
                 ),
                 TextButton(
                   onPressed: () async {
-                    await ref
+                    ref
                         .child("Role")
                         .push()
                         .set({"role_name": _roleName.text}).asStream();
@@ -72,7 +72,7 @@ class _RoleScreenState extends State<RoleScreen> {
                     Navigator.pop(context);
                     toastMessage("Role created", txtColor: Colors.green);
                   },
-                  child: Text(
+                  child: const Text(
                     "Create",
                     style: TextStyle(color: Colors.green),
                   ),
@@ -82,7 +82,7 @@ class _RoleScreenState extends State<RoleScreen> {
           );
         },
         backgroundColor: primaryColor,
-        child: Icon(
+        child: const Icon(
           Icons.person_add,
           color: Colors.white,
           size: 18,
@@ -94,13 +94,13 @@ class _RoleScreenState extends State<RoleScreen> {
           Map mydata = snapshot.value as Map;
           mydata['key'] = snapshot.key;
           return ListTile(
-            leading: Icon(Icons.admin_panel_settings),
+            leading: const Icon(Icons.admin_panel_settings),
             title: Text(mydata['role_name']),
             trailing: IconButton(
               onPressed: () {
                 ref.child("Role").child(mydata['key']).remove();
               }, 
-              icon: Icon(Icons.delete, color: Colors.red,)
+              icon: const Icon(Icons.delete, color: Colors.red,)
             ),
           );
         }
@@ -108,42 +108,42 @@ class _RoleScreenState extends State<RoleScreen> {
     );
   }
 
-  Widget labelText(String _text, {double padding = 30}) {
+  Widget labelText(String text, {double padding = 30}) {
     return Padding(
       padding: EdgeInsets.only(left: padding, bottom: 5),
       child: Text(
-        _text,
-        style: TextStyle(fontSize: 12),
+        text,
+        style: const TextStyle(fontSize: 12),
       ),
     );
   }
 
   Widget textField(
-      String _hintText,
-      double _width,
-      TextEditingController _controller,
-      TextInputType _textInputType,
-      String _error) {
+      String hintText,
+      double width,
+      TextEditingController controller,
+      TextInputType textInputType,
+      String error) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
-            hintStyle: TextStyle(fontSize: 12),
+            errorText: error,
+            hintText: hintText,
+            hintStyle: const TextStyle(fontSize: 12),
             focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 1),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10)),
             errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

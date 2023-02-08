@@ -19,59 +19,60 @@ class _MoreScreenState extends State<MoreScreen> {
     return Scaffold(
       body: Column(
         children: [
+          // ignore: prefer_const_constructors
           ListTile(
-            leading: Icon(Icons.person, color: Colors.black,),
-            title: Text(
+            leading: const Icon(Icons.person, color: Colors.black,),
+            title: const Text(
             "Profile",
-              style: const TextStyle(fontSize: 13),
+              style: TextStyle(fontSize: 13),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (builder) => InviteMemberScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (builder) => const InviteMemberScreen()));
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(Icons.group, color: Colors.black,),
               title: Text(
               "Members",
-                style: const TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 13),
               ),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (builder) => RoleScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (builder) => const RoleScreen()));
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(Icons.admin_panel_settings, color: Colors.black,),
               title: Text(
               "Roles",
-                style: const TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 13),
               ),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (builder) => IngredientScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (builder) => const IngredientScreen()));
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(Icons.restaurant_sharp, color: Colors.black,),
               title: Text(
               "Ingredient",
-                style: const TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 13),
               ),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (builder) => LoginScreen()), (route) {return false;});
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (builder) => const LoginScreen()), (route) {return false;});
               UserPersistence().removeUserPreference();
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(Icons.exit_to_app, color: Colors.black,),
               title: Text(
               "Logout",
-                style: const TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 13),
               ),
             ),
           ),

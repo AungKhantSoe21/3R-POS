@@ -11,7 +11,7 @@ ThemeData getTheme(BuildContext context) {
       fontSizeFactor: 0.9,
       fontFamily: poppinFont,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: primaryColor,
       elevation: 0,
       centerTitle: true,

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -24,9 +26,9 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
-          icon: Icon(Icons.arrow_back, color: Colors.white,)
+          icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: Text(
+        title: const Text(
           "Add Member",
           style: TextStyle(
               fontFamily: poppinFont, fontSize: 16, color: Colors.white),
@@ -35,7 +37,7 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           labelText("Name"),
@@ -96,7 +98,7 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
                   });
                   Navigator.pop(context);
                 },
-                child: Text("Create", style: TextStyle(color: Colors.white),),
+                child: const Text("Create", style: TextStyle(color: Colors.white),),
               ),
             ),
           )
@@ -105,29 +107,29 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
     );
   }
 
-  Widget labelText(String _text, {double padding = 30}) {
+  Widget labelText(String text, {double padding = 30}) {
     return Padding(
       padding: EdgeInsets.only(left: padding, bottom: 5),
       child: Text(
-        _text,
-        style: TextStyle(fontSize: 12),
+        text,
+        style: const TextStyle(fontSize: 12),
       ),
     );
   }
 
   Widget textField(
-      String _hintText,
-      double _width,
-      TextEditingController _controller,
-      TextInputType _textInputType,
-      String _error,
+      String hintText,
+      double width,
+      TextEditingController controller,
+      TextInputType textInputType,
+      String error,
       {bool password = false}) {
     return Center(
       child: SizedBox(
-        width: _width,
+        width: width,
         child: TextField(
-          controller: _controller,
-          keyboardType: _textInputType,
+          controller: controller,
+          keyboardType: textInputType,
           cursorColor: Colors.black,
           obscureText: password,
           decoration: InputDecoration(
@@ -135,14 +137,14 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
             fillColor: Colors.white,
             contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
             // error text for textfield
-            errorText: _error,
-            hintText: _hintText,
-            hintStyle: TextStyle(fontSize: 12),
+            errorText: error,
+            hintText: hintText,
+            hintStyle: const TextStyle(fontSize: 12),
             focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 1),
+                borderSide: const BorderSide(color: Colors.black, width: 1),
                 borderRadius: BorderRadius.circular(10)),
             errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: const BorderSide(color: Colors.black, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
