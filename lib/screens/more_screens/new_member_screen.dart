@@ -60,12 +60,12 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
           labelText("Role"),
           InkWell(
             onTap: () async {
-              String data = await dropDownBottomModal(context, false, [], ref.child("Role"), dropListItemName: "role_name");
+              List data = await dropDownBottomModal(context, false, [], ref.child("Role"), dropListItemName: "role_name");
               setState(() {
                 if (data.isEmpty) {
                   _memberRoleController.text = _memberRoleController.text;
                 } else {
-                  _memberRoleController.text = data;
+                  _memberRoleController.text = data[0];
                 }
               });
             },

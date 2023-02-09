@@ -127,7 +127,7 @@ class _IngredientScreenState extends State<IngredientScreen> {
             ),
             trailing: IconButton(
               onPressed: () {
-                ref.child("ingredient").child(mydata['key']).remove();
+                ref.child("Ingredient").child(mydata['key']).remove();
               }, 
               icon: const Icon(Icons.delete, color: Colors.red,)
             ),

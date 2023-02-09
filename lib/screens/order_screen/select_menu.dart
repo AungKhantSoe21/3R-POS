@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -23,6 +25,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
   List categoryList = [];
   List items = [];
   List selectedMenuCard = [];
+  int ingredientPrice = 0;
 
   final TextEditingController _ingredient = TextEditingController();
   final TextEditingController _description = TextEditingController();
@@ -30,16 +33,19 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
   @override
   void initState() {
     super.initState();
-    if(SelectedMenuList.selectedMenuCard.isNotEmpty) {
-      setState(() {
-        selectedMenuCard = SelectedMenuList.selectedMenuCard;
+    for(int i = 0; i < SelectedMenuList.selectedMenuCard.length; i++) {
+      selectedMenuCard.add({
+        "key" : SelectedMenuList.selectedMenuCard[i]["key"],
+        "data" : SelectedMenuList.selectedMenuCard[i]["data"].toList(),
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref();
     final que = ref.child("Ingredient");
+    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -108,6 +114,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                     'name': mydata['item_name'],
                                                     'ingredient': "",
                                                     'description': "", 
+                                                    'ingredient_price': "",
                                                     'price': mydata['item_price']
                                                   }]
                                                 });
@@ -119,6 +126,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                       'name': mydata['item_name'],
                                                       'ingredient': "",
                                                       'description': "", 
+                                                      'ingredient_price': "",
                                                       'price': mydata['item_price']
                                                     });
                                                     break;
@@ -362,14 +370,17 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                   labelText("Add Ingredient", padding: 10),
                                                                                   InkWell(
                                                                                     onTap: () async {
-                                                                                      String data = await dropDownBottomModal(
-                                                                                        context, false, [], que, dropListItemName: "ingredient_name"
+                                                                                      List data = await dropDownBottomModal(
+                                                                                        context, false, [], que, dropListItemName: "ingredient_name", dropListItemName2: "ingredient_price"
                                                                                       );
+                                                                                      log(data.toString());
                                                                                       setState(() {
                                                                                         if(data.isEmpty) {
                                                                                           _ingredient.text = _ingredient.text;
+                                                                                          ingredientPrice = ingredientPrice;
                                                                                         } else {
-                                                                                          _ingredient.text = data;
+                                                                                          _ingredient.text = data[0][0];
+                                                                                          ingredientPrice = int.parse(data[0][1]);
                                                                                         }
                                                                                       });
                                                                                     },
@@ -402,9 +413,12 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                 TextButton(onPressed: () async {
                                                                                   setState(() {
                                                                                     data[j]['ingredient'] = _ingredient.text;
+                                                                                    data[j]['price'] = (int.parse(data[j]['price']) + ingredientPrice).toString();
+                                                                                    log(data[j]['price'].toString());
                                                                                     data[j]['description'] = _description.text;
                                                                                   });
                                                                                   _ingredient.text = "";
+                                                                                  ingredientPrice = 0;
                                                                                   _description.text = "";
                                                                                   Navigator.pop(context);
                                                                                   toastMessage("Update Successful", txtColor: Colors.green);
@@ -491,7 +505,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                         selectedMenuCard[i]['data'][0]['name'], 
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(fontSize: 10,color: Colors.white),
+                                        style: const TextStyle(fontSize: 8,color: Colors.white),
                                       )
                                     )
                                   ],

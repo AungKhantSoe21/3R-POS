@@ -82,7 +82,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               query: ref
                                   .child("Item")
                                   .child(categoryList[i]["category_name"]),
-                              itemBuilder: (context, snapshot, animation, index) {
+                              itemBuilder: (context, snapshot, animation, indxe) {
                                 Map mydata = snapshot.value as Map;
                                 mydata['key'] = snapshot.key;
                                 mydata.keys.toList()..sort();

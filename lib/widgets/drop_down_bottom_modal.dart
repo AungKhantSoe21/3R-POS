@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownItems, DatabaseReference ref, {double height = 350, String dropListItemName = ""}) async {
-  String returnString = "";
+Future<List> dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownItems, DatabaseReference ref, {double height = 350, String dropListItemName = "", String dropListItemName2 = ""}) async {
+  List returnList = [];
   await showModalBottomSheet(
     context: context,
     builder: (context) {
@@ -15,7 +17,8 @@ dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownIt
               InkWell(
                 onTap: () {
                   String data = dropDownItems[i];
-                  returnString = data;
+                  returnList.add([data]);
+                  log(returnList.toString());
                   Navigator.pop(context);
                 },
                 child: ListTile(
@@ -43,8 +46,11 @@ dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownIt
                     for (int i = 0; i < dropList.length; i++)
                     InkWell(
                       onTap: () {
-                        String data = dropList[i][dropListItemName];
-                        returnString = data;
+                        if(dropListItemName2.isNotEmpty) {
+                          returnList.add([dropList[i][dropListItemName], dropList[i][dropListItemName2]]);
+                        } else {
+                          returnList.add([dropList[i][dropListItemName]]);
+                        }
                         Navigator.pop(context);
                       },
                       child: ListTile(
@@ -67,5 +73,5 @@ dropDownBottomModal(BuildContext context, bool dropDownWithList, List dropDownIt
       }
     } 
   );
-  return returnString;
+  return returnList;
 }

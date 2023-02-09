@@ -95,14 +95,14 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         children: [
                           InkWell(
                             onTap: () async {
-                              String data = await dropDownBottomModal(
+                              List data = await dropDownBottomModal(
                                 context, false, [], que, dropListItemName: "category_name"
                               );
                               setState(() {
                                 if(data.isEmpty) {
                                   _category.text = _category.text;
                                 } else {
-                                  _category.text = data;
+                                  _category.text = data[0];
                                 }
                               });
                             },
@@ -176,12 +176,12 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                   labelText("Status"),
                   InkWell(
                     onTap: () async {
-                      String data = await dropDownBottomModal(context, true, ["Available", "Unavailable"], ref);
+                      List data = await dropDownBottomModal(context, true, ["Available", "Unavailable"], ref);
                       setState(() {
                         if(data.isEmpty) {
                           _menuStatus.text = _menuStatus.text;
                         } else {
-                          _menuStatus.text = data;
+                          _menuStatus.text = data[0];
                         }
                       });
                     },

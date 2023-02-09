@@ -8,25 +8,38 @@ import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/drop_down_bottom_modal.dart';
 import 'package:r_pos/widgets/toast_message.dart';
 
-class NewOrderScreen extends StatefulWidget {
+class EditOrderScreen extends StatefulWidget {
   List selectedMenu = [];
-  NewOrderScreen(this.selectedMenu, {Key? key}) : super(key: key);
+  String status;
+  String keyId;
+  EditOrderScreen(this.selectedMenu, this.status, this.keyId, {Key? key}) : super(key: key);
 
   @override
-  State<NewOrderScreen> createState() => _NewOrderScreenState();
+  State<EditOrderScreen> createState() => _EditOrderScreenState();
 }
 
-class _NewOrderScreenState extends State<NewOrderScreen> {
-  List selectedMenuCard = [];
-  final TextEditingController chooseTableController = TextEditingController();
+class _EditOrderScreenState extends State<EditOrderScreen> {
+  List selectedMenuCard = List.empty(growable: true);
+  final TextEditingController status = TextEditingController();
   final TextEditingController _ingredient = TextEditingController();
   final TextEditingController _description = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    for(int i = 0; i < widget.selectedMenu.length; i++) {
+      SelectedMenuList.selectedMenuCard.add({
+        "key" : widget.selectedMenu[i]["key"],
+        "data" : widget.selectedMenu[i]["data"],
+      });
+    }
+    status.text = widget.status;
+  }
 
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref();
     final que = ref.child("Ingredient");
-    final tableQue = ref.child("Tables");
     selectedMenuCard = SelectedMenuList.selectedMenuCard;
 
     return WillPopScope(
@@ -40,30 +53,33 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
             onPressed: () {Navigator.pop(context); SelectedMenuList.selectedMenuCard = [];}, 
             icon: const Icon(Icons.arrow_back, color: Colors.white,)
           ),
-          title: const Text("New Order", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
+          title: const Text("Edit Order", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
           centerTitle: true,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 25,),
-            labelText("Select Table No"),
+            labelText("Change Status"),
             InkWell(
               onTap: () async {
                 List data = await dropDownBottomModal(
-                  context, false, [], tableQue, dropListItemName: "table_no"
+                  context, true, [
+                    "Confirm", 
+                    "Serving", 
+                    "Paid"
+                  ], que
                 );
-                log(data.toString());
                 setState(() {
                   if(data.isEmpty) {
-                    chooseTableController.text = chooseTableController.text;
+                    status.text = status.text;
                   } else {
-                    chooseTableController.text = data[0][0];
+                    status.text = data[0][0];
                   }
                 });
               },
               child: AbsorbPointer(
-                child: textField("Select sitting table no", MediaQuery.of(context).size.width * 0.9, chooseTableController, TextInputType.name, "")
+                child: textField("Change order status", MediaQuery.of(context).size.width * 0.9, status, TextInputType.name, "")
               ),
             ),
             Align(
@@ -84,7 +100,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                       backgroundColor: MaterialStateProperty.all(primaryColor),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
-                    child: const Text("Select Menu"),
+                    child: const Text("Add Another Menu"),
                   ),
                 ),
               ),
@@ -255,9 +271,10 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                                                                                       labelText("Add Ingredient", padding: 10),
                                                                                       InkWell(
                                                                                         onTap: () async {
-                                                                                          List data = await dropDownBottomModal(
+                                                                                          List<dynamic> data = await dropDownBottomModal(
                                                                                             context, false, [], que, dropListItemName: "ingredient_name"
                                                                                           );
+                                                                                          log(data[0]);
                                                                                           setState(() {
                                                                                             if(data.isEmpty) {
                                                                                               _ingredient.text = _ingredient.text;
@@ -422,18 +439,17 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () async {
-                    await ref.child("Order").push().set({
-                      "table_no" : chooseTableController.text,
-                      "ordered_menu" : selectedMenuCard,
-                      "order_status" : "Confirm",
-                      "order_time" : DateTime.now().toString()
+                    ref.child("Order").child(widget.keyId).update({
+                      "order_status" : status.text,
+                      "ordered_menu" : SelectedMenuList.selectedMenuCard
                     }).asStream();
+                    Navigator.pop(context);
                     Navigator.pop(context);
                     SelectedMenuList.selectedMenuCard = [];
                   }, 
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(primaryColor)),
                   child: const Text(
-                    "Submit",
+                    "Update",
                     style: TextStyle(color: Colors.white),
                   )
                 ),
@@ -441,6 +457,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
             ),
             const SizedBox(height: 20,)
           ],
+        
         ),
       ),
     );
