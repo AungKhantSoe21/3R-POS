@@ -9,6 +9,7 @@ import 'package:r_pos/screens/home_screen.dart';
 import 'package:r_pos/screens/menu_screens/new_menu_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/widgets/loader.dart';
+import 'package:r_pos/widgets/toast_message.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -95,62 +96,67 @@ class _MenuScreenState extends State<MenuScreen> {
                                     child: Text("No menu for this category!"),
                                   );
                                 } else {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context).size.width * 0.30,
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            color: primaryColor,
-                                            border: Border.all(),
-                                            borderRadius: BorderRadius.circular(10),
+                                  return InkWell(
+                                    onTap: () {
+                                      toastMessage("Detail functionality will release on V2", fontSize: 14);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context).size.width * 0.30,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              color: primaryColor,
+                                              border: Border.all(),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(10),
+                                              child: CachedNetworkImage(
+                                                imageUrl: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
+                                                ? "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f"
+                                                : mydata['image_path'],
+                                                placeholder: (context, s) => Loader(Colors.white, 2, size: 15),
+                                              ),
+                                            )
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(10),
-                                            child: CachedNetworkImage(
-                                              imageUrl: mydata['image_path'].toString() == "null" || mydata['image_path'].isEmpty == true
-                                              ? "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/defaultImage%2Ffood.jpg?alt=media&token=5d34f868-8500-4062-a6f9-2e223ea7eb2f"
-                                              : mydata['image_path'],
-                                              placeholder: (context, s) => Loader(Colors.white, 2, size: 15),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 15.0),
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context).size.width * 0.60,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    mydata['item_name'],
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 14
+                                                    ),
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow.ellipsis,
+                                                  ),
+                                                  SizedBox(height: 10,),
+                                                  Text(
+                                                    mydata['item_price'] + " Ks",
+                                                    style: TextStyle(
+                                                      fontSize: 12
+                                                    ),
+                                                    maxLines: 1,
+                                                    overflow: TextOverflow.ellipsis,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           )
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 15.0),
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context).size.width * 0.60,
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  mydata['item_name'],
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14
-                                                  ),
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                                SizedBox(height: 10,),
-                                                Text(
-                                                  mydata['item_price'] + " Ks",
-                                                  style: TextStyle(
-                                                    fontSize: 12
-                                                  ),
-                                                  maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   );
                                 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/order_screen/edit_order_screen.dart';
+import 'package:r_pos/screens/order_screen/print_receipt_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 
@@ -11,7 +12,9 @@ class OrderDetailScreen extends StatefulWidget {
   String keyId = "";
   String route = "";
   String date = "";
-  OrderDetailScreen(this.data, this.tableNo, this.time, this.status, this.keyId, this.route, this.date, {Key? key}) : super(key: key);
+  String tableKey = "";
+  int price = 0;
+  OrderDetailScreen(this.data, this.tableNo, this.time, this.status, this.keyId, this.route, this.date, this.tableKey, this.price, {Key? key}) : super(key: key);
 
   @override
   State<OrderDetailScreen> createState() => _OrderDetailScreenState();
@@ -38,11 +41,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => EditOrderScreen(widget.data, widget.status, widget.keyId))
+            MaterialPageRoute(builder: (_) => EditOrderScreen(widget.data, widget.status, widget.keyId, widget.tableKey))
           );
         }, 
         child: Text("Edit",),
       ),
+      
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {Navigator.pop(context);}, 
@@ -50,6 +54,22 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
         ),
         title: Text(widget.route != "order" ? "Sale Detail" : "Order Detail", style: TextStyle(color: Colors.white, fontFamily: poppinFont, fontSize: 16),),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => PrintReceiptScreen(
+                  widget.tableNo,
+                  widget.date,
+                  widget.time,
+                  widget.data,
+                  widget.price
+                ))
+              );
+            }, 
+            icon: Icon(Icons.assignment, color: Colors.white,)
+          )
+        ],
       ),
       body: Column(
         children: [

@@ -114,7 +114,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                             mydata['order_status'],
                                             mydata["key"].toString(),
                                             "order",
-                                            (DateTime.parse(mydata['order_time'].toString()).day).toString() + "-" +(DateTime.parse(mydata['order_time'].toString()).month).toString() + "-" + (DateTime.parse(mydata['order_time'].toString()).year).toString()
+                                            (DateTime.parse(mydata['order_time'].toString()).day).toString() + "-" +(DateTime.parse(mydata['order_time'].toString()).month).toString() + "-" + (DateTime.parse(mydata['order_time'].toString()).year).toString(),
+                                            mydata["table_key"] ?? "",
+                                            totalPrice
                                           )));
                                 },
                                 child: Container(

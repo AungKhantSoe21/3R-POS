@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:r_pos/screens/home_screen.dart';
 import 'package:r_pos/screens/table_screens/new_table_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
+import 'package:r_pos/widgets/toast_message.dart';
 
 class TableScreen extends StatefulWidget {
   const TableScreen({Key? key}) : super(key: key);
@@ -63,27 +64,33 @@ class _TableScreenState extends State<TableScreen> {
                     return Container();
                   }
                 } else {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        textRow("No", tables[index]['table_no']),
-                        textRow(
-                          "Shape", 
-                          tables[index]['table_shape'], 
-                          iconOn: true, 
-                          icon: tables[index]['table_shape'] == "Rectangle" 
-                          ? Icons.rectangle_outlined
-                          : tables[index]['table_shape'] == "Circle" 
-                          ? Icons.circle_outlined
-                          : Icons.square_outlined
-                        ),
-                        textRow("Capable", tables[index]['customer_capacity'].toString()),
-                      ],
+                  return InkWell(
+                    onTap: () {
+                      toastMessage("Detail functionality will release on V2", fontSize: 14);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: tables[index]['table_status'] == "Available" ? Colors.white : Colors.blueGrey,
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          textRow("No", tables[index]['table_no']),
+                          textRow(
+                            "Shape", 
+                            tables[index]['table_shape'], 
+                            iconOn: true, 
+                            icon: tables[index]['table_shape'] == "Rectangle" 
+                            ? Icons.rectangle_outlined
+                            : tables[index]['table_shape'] == "Circle" 
+                            ? Icons.circle_outlined
+                            : Icons.square_outlined
+                          ),
+                          textRow("Capable", tables[index]['customer_capacity'].toString()),
+                        ],
+                      ),
                     ),
                   );
                 }

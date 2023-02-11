@@ -64,13 +64,13 @@ class _InviteMemberScreenState extends State<InviteMemberScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Name  :   " + mydata['user_name']),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: IconButton(
-                            onPressed: () {}, 
-                            icon: const Icon(Icons.edit, color: Colors.greenAccent, size: 20,)
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(right: 20.0),
+                        //   child: IconButton(
+                        //     onPressed: () {}, 
+                        //     icon: const Icon(Icons.edit, color: Colors.greenAccent, size: 20,)
+                        //   ),
+                        // ),
                       ],
                     ),
                     Row(

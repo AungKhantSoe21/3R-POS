@@ -18,6 +18,7 @@ class NewOrderScreen extends StatefulWidget {
 
 class _NewOrderScreenState extends State<NewOrderScreen> {
   List selectedMenuCard = [];
+  String selectedTable = "";
   final TextEditingController chooseTableController = TextEditingController();
   final TextEditingController _ingredient = TextEditingController();
   final TextEditingController _description = TextEditingController();
@@ -51,14 +52,14 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
             InkWell(
               onTap: () async {
                 List data = await dropDownBottomModal(
-                  context, false, [], tableQue, dropListItemName: "table_no"
+                  context, false, [], tableQue, dropListItemName: "table_no", dropListItemName2: "key", dropListItemName3: "table_status"
                 );
-                log(data.toString());
                 setState(() {
                   if(data.isEmpty) {
                     chooseTableController.text = chooseTableController.text;
                   } else {
                     chooseTableController.text = data[0][0];
+                    selectedTable = data[0][1];
                   }
                 });
               },
@@ -262,7 +263,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                                                                                             if(data.isEmpty) {
                                                                                               _ingredient.text = _ingredient.text;
                                                                                             } else {
-                                                                                              _ingredient.text = data[0];
+                                                                                              _ingredient.text = data[0][0];
                                                                                             }
                                                                                           });
                                                                                         },
@@ -424,10 +425,14 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                   onPressed: () async {
                     await ref.child("Order").push().set({
                       "table_no" : chooseTableController.text,
+                      "table_key" : selectedTable,
                       "ordered_menu" : selectedMenuCard,
                       "order_status" : "Confirm",
                       "order_time" : DateTime.now().toString()
                     }).asStream();
+                    await ref.child("Tables").child(selectedTable).update({
+                      "table_status" : "Unavailable"
+                    });
                     Navigator.pop(context);
                     SelectedMenuList.selectedMenuCard = [];
                   }, 

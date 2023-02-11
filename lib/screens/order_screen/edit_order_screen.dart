@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/order_screen/select_menu.dart';
@@ -12,7 +10,8 @@ class EditOrderScreen extends StatefulWidget {
   List selectedMenu = [];
   String status;
   String keyId;
-  EditOrderScreen(this.selectedMenu, this.status, this.keyId, {Key? key}) : super(key: key);
+  String tableKey;
+  EditOrderScreen(this.selectedMenu, this.status, this.keyId, this.tableKey, {Key? key}) : super(key: key);
 
   @override
   State<EditOrderScreen> createState() => _EditOrderScreenState();
@@ -28,7 +27,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   void initState() {
     super.initState();
     for(int i = 0; i < widget.selectedMenu.length; i++) {
-      selectedMenuCard.add({
+      SelectedMenuList.selectedMenuCard.add({
         "key" : widget.selectedMenu[i]["key"],
         "data" : widget.selectedMenu[i]["data"],
       });
@@ -40,7 +39,10 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref();
     final que = ref.child("Ingredient");
-    SelectedMenuList.selectedMenuCard = selectedMenuCard;
+    // if(selectedMenuCard.isNotEmpty) {
+    //   SelectedMenuList.selectedMenuCard = selectedMenuCard;
+    // }
+    selectedMenuCard = SelectedMenuList.selectedMenuCard;
 
     return WillPopScope(
       onWillPop: () async {
@@ -225,121 +227,122 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                      PopupMenuButton<int>(
-                                                                        itemBuilder: (context) => [
-                                                                          PopupMenuItem( 
-                                                                            value: 1, 
-                                                                            child: Row( 
-                                                                              children: const [
-                                                                                Icon(Icons.edit),
-                                                                                SizedBox(
-                                                                                  width: 10,
-                                                                                ),
-                                                                                Text("Edit")
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                          PopupMenuItem(
-                                                                            value: 2,
-                                                                            child: Row(
-                                                                              children: const [
-                                                                                Icon(Icons.delete),
-                                                                                SizedBox(
-                                                                                  width: 10,
-                                                                                ),
-                                                                                Text("Delete")
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                        color: Colors.grey,
-                                                                        elevation: 2,
-                                                                        onSelected: (value) {
-                                                                          if(value == 1) {
-                                                                            _ingredient.text = data[j]['ingredient'];
-                                                                            _description.text = data[j]['description'];
-                                                                            showDialog(
-                                                                              context: context, 
-                                                                              barrierDismissible: false,
-                                                                              builder: (context) => AlertDialog(
-                                                                                title: const Text("Update", style: TextStyle(fontSize: 12),),
-                                                                                content: SizedBox(
-                                                                                  height: 200,
-                                                                                  child: Column(
-                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                    children: [
-                                                                                      labelText("Add Ingredient", padding: 10),
-                                                                                      InkWell(
-                                                                                        onTap: () async {
-                                                                                          List data = await dropDownBottomModal(
-                                                                                            context, false, [], que, dropListItemName: "ingredient_name"
-                                                                                          );
-                                                                                          setState(() {
-                                                                                            if(data.isEmpty) {
-                                                                                              _ingredient.text = _ingredient.text;
-                                                                                            } else {
-                                                                                              _ingredient.text = data[0][0];
-                                                                                            }
-                                                                                          });
-                                                                                        },
-                                                                                        child: AbsorbPointer(
-                                                                                          child: textField(
-                                                                                            "Add Ingredient", 
-                                                                                            double.infinity, 
-                                                                                            _ingredient, 
-                                                                                            TextInputType.name,
-                                                                                            ""
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                      labelText("Description", padding: 10),
-                                                                                      textField(
-                                                                                        "Description", 
-                                                                                        double.infinity, 
-                                                                                        _description, 
-                                                                                        TextInputType.name,                                                                           ""
-                                                                                      )
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                                actions: [  
-                                                                                    TextButton(onPressed: () {
-                                                                                      _ingredient.text = "";
-                                                                                      _description.text = "";
-                                                                                      Navigator.pop(context);
-                                                                                    }, child: const Text("Cancel", style: TextStyle(color: Colors.red),),),  
-                                                                                    TextButton(onPressed: () async {
-                                                                                      setState(() {
-                                                                                        data[j]['ingredient'] = _ingredient.text;
-                                                                                        data[j]['description'] = _description.text;
-                                                                                      });
-                                                                                      _ingredient.text = "";
-                                                                                      _description.text = "";
-                                                                                      Navigator.pop(context);
-                                                                                      toastMessage("Update Successful", txtColor: Colors.green);
-                                                                                    }, child: const Text("Update", style: TextStyle(color: Colors.green),),)  
-                                                                                ]
-                                                                              )
-                                                                            );
-                                                                          } else {
-                                                                            setState(() {
-                                                                              Future(() {
-                                                                                if(j <= 0 && data.length == 1) {
-                                                                                  Navigator.pop(context);
-                                                                                }
-                                                                              }).then((value) {
-                                                                                if(j <= 0 && data.length == 1) {
-                                                                                  data = [];
-                                                                                  selectedMenuCard[i] = [];
-                                                                                  selectedMenuCard.removeAt(i);
-                                                                                } else {
-                                                                                  data.removeAt(j);
-                                                                                }
-                                                                              });
-                                                                            });
-                                                                          }
-                                                                        },
-                                                                      ),
+                                                                      // PopupMenuButton<int>(
+                                                                      //   itemBuilder: (context) => [
+                                                                      //     PopupMenuItem( 
+                                                                      //       value: 1, 
+                                                                      //       child: Row( 
+                                                                      //         children: const [
+                                                                      //           Icon(Icons.edit),
+                                                                      //           SizedBox(
+                                                                      //             width: 10,
+                                                                      //           ),
+                                                                      //           Text("Edit")
+                                                                      //         ],
+                                                                      //       ),
+                                                                      //     ),
+                                                                      //     PopupMenuItem(
+                                                                      //       value: 2,
+                                                                      //       child: Row(
+                                                                      //         children: const [
+                                                                      //           Icon(Icons.delete),
+                                                                      //           SizedBox(
+                                                                      //             width: 10,
+                                                                      //           ),
+                                                                      //           Text("Delete")
+                                                                      //         ],
+                                                                      //       ),
+                                                                      //     ),
+                                                                      //   ],
+                                                                      //   color: Colors.grey,
+                                                                      //   elevation: 2,
+                                                                      //   onSelected: (value) {
+                                                                      //     if(value == 1) {
+                                                                      //       _ingredient.text = data[j]['ingredient'];
+                                                                      //       _description.text = data[j]['description'];
+                                                                      //       showDialog(
+                                                                      //         context: context, 
+                                                                      //         barrierDismissible: false,
+                                                                      //         builder: (context) => AlertDialog(
+                                                                      //           title: const Text("Update", style: TextStyle(fontSize: 12),),
+                                                                      //           content: SizedBox(
+                                                                      //             height: 200,
+                                                                      //             child: Column(
+                                                                      //               crossAxisAlignment: CrossAxisAlignment.start,
+                                                                      //               children: [
+                                                                      //                 labelText("Add Ingredient", padding: 10),
+                                                                      //                 InkWell(
+                                                                      //                   onTap: () async {
+                                                                      //                     List data = await dropDownBottomModal(
+                                                                      //                       context, false, [], que, dropListItemName: "ingredient_name"
+                                                                      //                     );
+                                                                      //                     setState(() {
+                                                                      //                       if(data.isEmpty) {
+                                                                      //                         _ingredient.text = _ingredient.text;
+                                                                      //                       } else {
+                                                                      //                         _ingredient.text = data[0][0];
+                                                                      //                       }
+                                                                      //                     });
+                                                                      //                   },
+                                                                      //                   child: AbsorbPointer(
+                                                                      //                     child: textField(
+                                                                      //                       "Add Ingredient", 
+                                                                      //                       double.infinity, 
+                                                                      //                       _ingredient, 
+                                                                      //                       TextInputType.name,
+                                                                      //                       ""
+                                                                      //                     ),
+                                                                      //                   ),
+                                                                      //                 ),
+                                                                      //                 labelText("Description", padding: 10),
+                                                                      //                 textField(
+                                                                      //                   "Description", 
+                                                                      //                   double.infinity, 
+                                                                      //                   _description, 
+                                                                      //                   TextInputType.name,                                                                           ""
+                                                                      //                 )
+                                                                      //               ],
+                                                                      //             ),
+                                                                      //           ),
+                                                                      //           actions: [  
+                                                                      //               TextButton(onPressed: () {
+                                                                      //                 _ingredient.text = "";
+                                                                      //                 _description.text = "";
+                                                                      //                 Navigator.pop(context);
+                                                                      //               }, child: const Text("Cancel", style: TextStyle(color: Colors.red),),),  
+                                                                      //               TextButton(onPressed: () async {
+                                                                      //                 setState(() {
+                                                                      //                   data[j]['ingredient'] = _ingredient.text;
+                                                                      //                   data[j]['description'] = _description.text;
+                                                                      //                 });
+                                                                      //                 _ingredient.text = "";
+                                                                      //                 _description.text = "";
+                                                                      //                 Navigator.pop(context);
+                                                                      //                 toastMessage("Update Successful", txtColor: Colors.green);
+                                                                      //               }, child: const Text("Update", style: TextStyle(color: Colors.green),),)  
+                                                                      //           ]
+                                                                      //         )
+                                                                      //       );
+                                                                      //     } else {
+                                                                      //       setState(() {
+                                                                      //         Future(() {
+                                                                      //           if(j <= 0 && data.length == 1) {
+                                                                      //             Navigator.pop(context);
+                                                                      //           }
+                                                                      //         }).then((value) {
+                                                                      //           if(j <= 0 && data.length == 1) {
+                                                                      //             data = [];
+                                                                      //             selectedMenuCard[i] = [];
+                                                                      //             selectedMenuCard.removeAt(i);
+                                                                      //           } else {
+                                                                      //             data.removeAt(j);
+                                                                      //           }
+                                                                      //         });
+                                                                      //       });
+                                                                      //     }
+                                                                      //   },
+                                                                      // ),
+                                                                      
                                                                       const SizedBox(width: 10,)
                                                                     ],
                                                                   ),
@@ -442,6 +445,12 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                       "order_status" : status.text,
                       "ordered_menu" : SelectedMenuList.selectedMenuCard
                     }).asStream();
+                    if(status.text == "Paid") {
+                      await ref.child("Tables").child(widget.tableKey).update({
+                        "table_status" : "Available"
+                      });
+                    }
+                    
                     Navigator.pop(context);
                     Navigator.pop(context);
                     SelectedMenuList.selectedMenuCard = [];

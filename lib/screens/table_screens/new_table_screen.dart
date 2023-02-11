@@ -77,7 +77,8 @@ class _NewTableScreenState extends State<NewTableScreen> {
                   ref.child("Tables").push().set({
                     "table_no" : _tableNo.text,
                     "customer_capacity" : int.parse(_cusCapacity.text),
-                    "table_shape" : _tableShape.text
+                    "table_shape" : _tableShape.text,
+                    "table_status" : "Available"
                   }).asStream();
                   Navigator.pop(context);
                 }, 

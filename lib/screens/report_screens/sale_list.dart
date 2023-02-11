@@ -76,7 +76,9 @@ class _SaleListScreenState extends State<SaleListScreen> {
                                               mydata['order_status'],
                                               mydata["key"].toString(),
                                               "sale",
-                                              (DateTime.parse(mydata['order_time'].toString()).day).toString() + "-" +(DateTime.parse(mydata['order_time'].toString()).month).toString() + "-" + (DateTime.parse(mydata['order_time'].toString()).year).toString()
+                                              (DateTime.parse(mydata['order_time'].toString()).day).toString() + "-" +(DateTime.parse(mydata['order_time'].toString()).month).toString() + "-" + (DateTime.parse(mydata['order_time'].toString()).year).toString(),
+                                              mydata["table_key"] ?? "",
+                                              totalPrice
                                             )));
                                   },
                                   child: Container(
