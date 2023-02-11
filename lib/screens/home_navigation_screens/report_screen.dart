@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/home_screen.dart';
 import 'package:r_pos/screens/report_screens/generate_pur_pattern.dart';
 import 'package:r_pos/screens/report_screens/sale_list.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -19,6 +20,7 @@ class _ReportScreenState extends State<ReportScreen> {
       body: Column(
         children: [
           const SizedBox(height: 15,),
+          if(User.user[1] == "Admin" || User.user[1] == "Cashier")
           Center(
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,

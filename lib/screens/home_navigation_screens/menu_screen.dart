@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:r_pos/screens/home_screen.dart';
 
 import 'package:r_pos/screens/menu_screens/new_menu_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
@@ -20,11 +21,14 @@ class _MenuScreenState extends State<MenuScreen> {
   final ref = FirebaseDatabase.instance.ref();
   List categoryList = [];
   List items = [];
+  String userRole = "";
 
   @override
   Widget build(BuildContext context) {
+    userRole = User.user[1];
+    
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: userRole != "Admin" ? null : FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (_) => NewMenuScreen()));
         },

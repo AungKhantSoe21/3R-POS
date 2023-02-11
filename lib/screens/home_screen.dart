@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:r_pos/core/persistence/user_persistence.dart';
 import 'package:r_pos/screens/home_navigation_screens/menu_screen.dart';
 import 'package:r_pos/screens/home_navigation_screens/more_screen.dart';
 import 'package:r_pos/screens/home_navigation_screens/order_screen.dart';
@@ -9,6 +10,10 @@ import 'package:r_pos/screens/home_navigation_screens/table_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/toast_message.dart';
+
+class User {
+  static List user = [];
+}
 
 class HomeScreen extends StatefulWidget {
   static String route = 'HomeScreen';
@@ -43,6 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return exit(0);
   }
   // back key instance
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  getUser() async {
+    User.user = await UserPersistence().getUserPreference();
+  }
 
   @override
   Widget build(BuildContext context) {

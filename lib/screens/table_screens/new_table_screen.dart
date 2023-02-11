@@ -55,7 +55,7 @@ class _NewTableScreenState extends State<NewTableScreen> {
                 if(data.isEmpty) {
                   _tableShape.text = _tableShape.text;
                 } else {
-                  _tableShape.text = data[0];
+                  _tableShape.text = data[0][0];
                 }
               });
             },

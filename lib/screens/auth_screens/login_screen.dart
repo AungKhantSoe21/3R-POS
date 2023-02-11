@@ -71,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     for(int i = 0; i < data.length; i++) {
                       if(data[i]['user_name'] == nameController.text && data[i]['user_password'] == passwordController.text) {
                         UserPersistence().saveUserPersistence(data[i]['user_name'], data[i]['user_role']);
+                        User.user = [data[i]['user_name'], data[i]['user_role']];
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (_) => HomeScreen())
                         );

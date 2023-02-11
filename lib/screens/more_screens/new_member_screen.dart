@@ -65,7 +65,7 @@ class _NewMemberScreenState extends State<NewMemberScreen> {
                 if (data.isEmpty) {
                   _memberRoleController.text = _memberRoleController.text;
                 } else {
-                  _memberRoleController.text = data[0];
+                  _memberRoleController.text = data[0][0];
                 }
               });
             },

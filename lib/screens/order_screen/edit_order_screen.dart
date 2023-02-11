@@ -28,7 +28,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   void initState() {
     super.initState();
     for(int i = 0; i < widget.selectedMenu.length; i++) {
-      SelectedMenuList.selectedMenuCard.add({
+      selectedMenuCard.add({
         "key" : widget.selectedMenu[i]["key"],
         "data" : widget.selectedMenu[i]["data"],
       });
@@ -40,7 +40,7 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref();
     final que = ref.child("Ingredient");
-    selectedMenuCard = SelectedMenuList.selectedMenuCard;
+    SelectedMenuList.selectedMenuCard = selectedMenuCard;
 
     return WillPopScope(
       onWillPop: () async {
@@ -271,15 +271,14 @@ class _EditOrderScreenState extends State<EditOrderScreen> {
                                                                                       labelText("Add Ingredient", padding: 10),
                                                                                       InkWell(
                                                                                         onTap: () async {
-                                                                                          List<dynamic> data = await dropDownBottomModal(
+                                                                                          List data = await dropDownBottomModal(
                                                                                             context, false, [], que, dropListItemName: "ingredient_name"
                                                                                           );
-                                                                                          log(data[0]);
                                                                                           setState(() {
                                                                                             if(data.isEmpty) {
                                                                                               _ingredient.text = _ingredient.text;
                                                                                             } else {
-                                                                                              _ingredient.text = data[0];
+                                                                                              _ingredient.text = data[0][0];
                                                                                             }
                                                                                           });
                                                                                         },

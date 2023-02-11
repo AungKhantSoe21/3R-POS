@@ -1,36 +1,45 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:r_pos/core/service/apriori_call.api.dart';
+import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
+import 'package:r_pos/widgets/loader.dart';
 
 class GeneratedResult extends StatefulWidget {
-  const GeneratedResult({Key? key}) : super(key: key);
+  String supportCount = "";
+  String minimumConf = "";
+  List transaction = [];
+  GeneratedResult(this.supportCount, this.minimumConf, this.transaction, {Key? key}) : super(key: key);
 
   @override
   State<GeneratedResult> createState() => _GeneratedResultState();
 }
 
 class _GeneratedResultState extends State<GeneratedResult> {
-  List rules = [
-    {
-      "front": "Alcohol, Beer, Water",
-      "back": "French Fries",
-      "confidence": "86%"
-    },
-    {
-      "front": "Alcohol, Beer, Ice",
-      "back": "Water",
-      "confidence": "100%"
-    },
-    {
-      "front": "Alcohol, Ice, Water",
-      "back": "French Fries",
-      "confidence": "75%"
-    },
-    {
-      "front": "Alcohol, Ice, Water",
-      "back": "Salad",
-      "confidence": "75%"
-    },
-  ];
+  ResponseStatusModel? res;
+  bool isLoading = false;
+
+  List rules = [];
+  List set = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    setState(() {
+      isLoading = true;
+    });
+    res = await getRules(widget.transaction, widget.supportCount, widget.minimumConf);
+    setState(() {
+      isLoading = false;
+    });
+    rules = res!.confidence;
+    set = res!.rule[0]["name"];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,22 +58,60 @@ class _GeneratedResultState extends State<GeneratedResult> {
           SizedBox(height: 15,),
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
-            child: textRow("Min Supp-Count", "4"),
+            child: textRow("Min Supp-Count", widget.supportCount),
           ),
           SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
-            child: textRow("Min Confidence", "70%"),
+            child: textRow("Min Confidence", widget.minimumConf + "%"),
           ),
           SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
-            child: textRow("From Date", "1-2-2023"),
+            child: textRow("Rule", isLoading ? "Callculating..." : res!.rule[0]['name'].toString()),
           ),
           SizedBox(height: 10,),
+          SizedBox(height: 5,),
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: textRow("To Date", "9-2-2023"),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(5)
+              ),
+              child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, i) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text("TID   :   "),
+                            Text(widget.transaction[i]["tid"].toString())
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text("Transaction   :   "),
+                            Text(widget.transaction[i]["items"].toString())
+                          ],
+                        )
+                      ]
+                    ),
+                  );
+                }, 
+                separatorBuilder: (context, i) {
+                  return SizedBox(
+                    height: 6,
+                  );
+                }, 
+                itemCount: widget.transaction.length
+              ),
+            ),
           ),
           SizedBox(
             height: 10,
@@ -78,20 +125,22 @@ class _GeneratedResultState extends State<GeneratedResult> {
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(7)
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text("Association Rules", style: TextStyle(fontWeight: FontWeight.bold),),
-                    ),
-                    SizedBox(height: 10,),
-                    for(int i = 0; i < rules.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: ruleRow(i),
-                    )
-                  ],
+                child: isLoading ? Loader(primaryColor, 2, size: 20) : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("Association Rules", style: TextStyle(fontWeight: FontWeight.bold),),
+                      ),
+                      SizedBox(height: 10,),
+                      for(int i = 0; i < rules.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: ruleRow(i),
+                      )
+                    ],
+                  ),
                 )
               ),
             ),
@@ -102,19 +151,30 @@ class _GeneratedResultState extends State<GeneratedResult> {
   }
 
   Widget ruleRow(int i) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      child: Row(
-        children: [
-          Text(rules[i]['front']),
-          Icon(Icons.arrow_forward),
-          Text(rules[i]['back']),
-          SizedBox(width: 10,),
-          Icon(Icons.arrow_forward),
-          Text(rules[i]['confidence']),
-        ],
-      ),
-    );
+    List p = [];
+    p = res!.rule[0]["name"];
+    List data = rules[i][0].toString().split(",");
+    log(data.toString());
+    for (int j = 0; j < data.length; j++) {
+      p.remove(data[j].toString());
+    }
+    log(p.toString());
+    if(set.length != data.length) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: Row(
+          children: [
+            Text(rules[i][0]),
+            Icon(Icons.arrow_forward),
+            // Text(p.toString()),
+            // SizedBox(width: 10,),
+            // Icon(Icons.arrow_forward),
+            Text(rules[i][1]),
+          ],
+        ),
+      );
+    }
+    return Container();
   }
 
   Widget textRow(String text1, String text2,

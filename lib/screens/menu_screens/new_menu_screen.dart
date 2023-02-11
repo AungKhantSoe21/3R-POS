@@ -102,7 +102,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                 if(data.isEmpty) {
                                   _category.text = _category.text;
                                 } else {
-                                  _category.text = data[0];
+                                  _category.text = data[0][0];
                                 }
                               });
                             },
@@ -181,7 +181,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         if(data.isEmpty) {
                           _menuStatus.text = _menuStatus.text;
                         } else {
-                          _menuStatus.text = data[0];
+                          _menuStatus.text = data[0][0];
                         }
                       });
                     },

@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:r_pos/screens/home_screen.dart';
 import 'package:r_pos/screens/table_screens/new_table_screen.dart';
 import 'package:r_pos/utils/constant_color.dart';
 
@@ -11,10 +12,11 @@ class TableScreen extends StatefulWidget {
 }
 
 class _TableScreenState extends State<TableScreen> {
+  String userRole = "";
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref().child("Tables");
-
+    userRole = User.user[1];
     return Scaffold(
       body: StreamBuilder(
         stream: ref.onValue,
@@ -34,28 +36,32 @@ class _TableScreenState extends State<TableScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               itemBuilder: (BuildContext context, int index) {
                 if(index == tables.length) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => const NewTableScreen())
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: primaryColor,
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(15),
+                  if(userRole == "Admin") {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const NewTableScreen())
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: primaryColor,
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(Icons.add, size: 50, color: Colors.white,),
+                            SizedBox(height: 5,),
+                            Text("New Table", style: TextStyle(color: Colors.white),)
+                          ],
+                        ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.add, size: 50, color: Colors.white,),
-                          SizedBox(height: 5,),
-                          Text("New Table", style: TextStyle(color: Colors.white),)
-                        ],
-                      ),
-                    ),
-                  );
+                    );
+                  } else {
+                    return Container();
+                  }
                 } else {
                   return Container(
                     decoration: BoxDecoration(
