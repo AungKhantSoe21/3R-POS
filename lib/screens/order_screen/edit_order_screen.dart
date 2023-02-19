@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/order_screen/select_menu.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/drop_down_bottom_modal.dart';
-import 'package:r_pos/widgets/toast_message.dart';
 
 class EditOrderScreen extends StatefulWidget {
   List selectedMenu = [];
@@ -20,8 +20,8 @@ class EditOrderScreen extends StatefulWidget {
 class _EditOrderScreenState extends State<EditOrderScreen> {
   List selectedMenuCard = List.empty(growable: true);
   final TextEditingController status = TextEditingController();
-  final TextEditingController _ingredient = TextEditingController();
-  final TextEditingController _description = TextEditingController();
+  // final TextEditingController _ingredient = TextEditingController();
+  // final TextEditingController _description = TextEditingController();
 
   @override
   void initState() {

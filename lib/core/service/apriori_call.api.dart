@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 getRules(List tra, String sup, String con) async {
-  var uri = Uri.parse('http://192.168.137.213:7777/aprori');
+  var uri = Uri.parse('http://192.168.1.117:7777/aprori');
   final response = await http.post(
     uri,
     headers: {

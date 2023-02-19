@@ -14,7 +14,7 @@ class GenerateItemPurchasing extends StatefulWidget {
 class _GenerateItemPurchasingState extends State<GenerateItemPurchasing> {
   final TextEditingController _minimumSupport = TextEditingController();
   final TextEditingController _minimumConf = TextEditingController();
-  final TextEditingController _transaction = TextEditingController();
+  // final TextEditingController _transaction = TextEditingController();
   List dataTransaction = [
     {
       "tid": "T01",
