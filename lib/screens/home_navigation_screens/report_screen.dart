@@ -43,29 +43,29 @@ class _ReportScreenState extends State<ReportScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 10,),
-          Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 45,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => GenerateItemPurchasing())
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: primaryColor,
-                  shadowColor: Colors.transparent,
-                  side: const BorderSide(color: Colors.black),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  )
-                ),
-                child: const Text("Generate Item Purchasing Patterns",),
-              ),
-            ),
-          ),
+          // const SizedBox(height: 10,),
+          // Center(
+          //   child: SizedBox(
+          //     width: MediaQuery.of(context).size.width * 0.8,
+          //     height: 45,
+          //     child: ElevatedButton(
+          //       onPressed: () {
+          //         Navigator.of(context).push(
+          //           MaterialPageRoute(builder: (_) => GenerateItemPurchasing())
+          //         );
+          //       },
+          //       style: ElevatedButton.styleFrom(
+          //         primary: primaryColor,
+          //         shadowColor: Colors.transparent,
+          //         side: const BorderSide(color: Colors.black),
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(10),
+          //         )
+          //       ),
+          //       child: const Text("Generate Item Purchasing Patterns",),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: 25,),
           // Expanded(
           //   child: Container(

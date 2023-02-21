@@ -66,7 +66,7 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                     categoryList = map.values.toList();
                     categoryList.sort((a, b) => a['category_name'].compareTo(b['category_name']));
                     return DefaultTabController(
-                      length: categoryList.length,
+                      length: categoryList.length + 1,
                       child: Column(
                         children: [
                           TabBar(
@@ -76,6 +76,13 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                             labelColor: Colors.black,
                             unselectedLabelColor: Colors.black,
                             tabs: [
+                              Tab(
+                                child: Center(
+                                    child: Text(
+                                      "Suggested Menu",
+                                    ),
+                                  ),
+                              ),
                               for (int i = 0; i < categoryList.length; i++)
                                 Tab(
                                   child: Center(
@@ -89,6 +96,9 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                           Expanded(
                               child: TabBarView(
                             children: [
+                              Center(
+                                child: Text("No suggestion right now"),
+                              ),
                               for (int i = 0; i < categoryList.length; i++)
                                 FirebaseAnimatedList(
                                     query: ref

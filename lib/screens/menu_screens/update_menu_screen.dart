@@ -1,26 +1,44 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: must_be_immutable
 
 import 'dart:developer';
 import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
 import 'package:r_pos/utils/constant_color.dart';
 import 'package:r_pos/utils/constant_text.dart';
 import 'package:r_pos/widgets/drop_down_bottom_modal.dart';
 import 'package:r_pos/widgets/toast_message.dart';
 
-class NewMenuScreen extends StatefulWidget {
-  const NewMenuScreen({Key? key}) : super(key: key);
+class UpdateMenuScreen extends StatefulWidget {
+  String? itemKey;
+  String? imagePath;
+  String? itemName;
+  String? itemPrice;
+  String? itemStatus;
+  String? todaySpecial;
+  String? itemCategory;
+  UpdateMenuScreen({
+    required this.itemKey, 
+    required this.imagePath, 
+    required this.itemName,
+    required this.itemPrice,
+    required this.itemStatus,
+    required this.todaySpecial,
+    required this.itemCategory,
+    Key? key
+  }) : super(key: key);
 
   @override
-  State<NewMenuScreen> createState() => _NewMenuScreenState();
+  State<UpdateMenuScreen> createState() => _UpdateMenuScreenState();
 }
 
-class _NewMenuScreenState extends State<NewMenuScreen> {
+class _UpdateMenuScreenState extends State<UpdateMenuScreen> {
   final TextEditingController _menuNameController = TextEditingController();
   final TextEditingController _menuPriceController = TextEditingController();
   final TextEditingController _menuStatus = TextEditingController();
@@ -30,6 +48,18 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
 
   File? image;
   String imageUrl = "";
+
+  @override
+  void initState() {
+    super.initState();
+    log(widget.itemKey.toString());
+    imageUrl = widget.imagePath!;
+    _category.text = widget.itemCategory!;
+    _menuNameController.text = widget.itemName!;
+    _menuPriceController.text = widget.itemPrice!;
+    _menuStatus.text = widget.itemStatus!;
+    _specialStatus.text = widget.todaySpecial!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +73,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
           onPressed: () {Navigator.pop(context);}, 
           icon: const Icon(Icons.arrow_back, color: Colors.white,)
         ),
-        title: const Text("New Menu", style: TextStyle( fontFamily: poppinFont, fontSize: 16),),
+        title: const Text("Update Menu", style: TextStyle( fontFamily: poppinFont, fontSize: 16),),
       ),
       body: Column(
         children: [
@@ -69,15 +99,13 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                     backgroundImage: FileImage(image!),
                   ),
               )
-              : const CircleAvatar(
+              : CircleAvatar(
                 radius: 52,
                 backgroundColor: Colors.black,
                 child: CircleAvatar(
                   backgroundColor: primaryColor,
                   radius: 50,
-                  child: Center(
-                    child: Icon(Icons.camera_alt, color: Colors.white,),
-                  ),
+                  backgroundImage: CachedNetworkImageProvider(imageUrl),
                 ),
               ),
             ),
@@ -203,7 +231,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       });
                     },
                     child: AbsorbPointer(
-                      child: textField("Set special status", MediaQuery.of(context).size.width * 0.9, _menuStatus, TextInputType.name, "")
+                      child: textField("Set special status", MediaQuery.of(context).size.width * 0.9, _specialStatus, TextInputType.name, "")
                     ),
                   ),
                   Center(
@@ -216,6 +244,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           foregroundColor: MaterialStateProperty.all(Colors.black)
                         ),
                         onPressed: () async {
+                          await ref.child("Item").child(widget.itemCategory!.toString()).child(widget.itemKey!.toString()).remove();
                           await ref.child("Item").child(_category.text).push().set({
                             "image_path" : imageUrl,
                             "item_name" : _menuNameController.text,
@@ -223,6 +252,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                             "item_status" : _menuStatus.text,
                             "today_special" : _specialStatus.text
                           });
+                          toastMessage("Update success", txtColor: Colors.green);
                           Navigator.pop(context);
                         }, 
                         child: const Text("Create", style: TextStyle(color: Colors.white),)
