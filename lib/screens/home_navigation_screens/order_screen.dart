@@ -34,7 +34,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       builder: (_) => NewOrderScreen(const [])));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: primaryColor,
+                    backgroundColor: primaryColor,
                     shadowColor: Colors.transparent,
                     side: BorderSide(color: Colors.black),
                     shape: RoundedRectangleBorder(

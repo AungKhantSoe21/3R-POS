@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:r_pos/screens/home_screen.dart';
-import 'package:r_pos/screens/report_screens/generate_pur_pattern.dart';
 import 'package:r_pos/screens/report_screens/sale_list.dart';
 import 'package:r_pos/utils/constant_color.dart';
 
@@ -32,7 +31,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: primaryColor,
+                  backgroundColor: primaryColor,
                   shadowColor: Colors.transparent,
                   side: const BorderSide(color: Colors.black),
                   shape: RoundedRectangleBorder(

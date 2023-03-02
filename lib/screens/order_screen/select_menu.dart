@@ -70,16 +70,771 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
       ]
     },
     {
-      "front_itemset": [], 
-      "back_itemset": []
+      "front_itemset": ["ထမင်းကြော်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNmFAgnObRehYQWmXr5",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880324530%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1856379200483197038.JPG?alt=media&token=d087c472-e6e2-4188-84b1-199058cdd57d",
+          "item_name" : "ပေါင်မုန့်မီးကင်",
+          "item_price" : "1000",
+          "item_status" : "Available"
+        }
+      ]
     },
     {
-      "front_itemset": [], 
-      "back_itemset": []
+      "front_itemset": ["ကြက်ဥပလာတာ"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
     },
     {
-      "front_itemset": [], 
-      "back_itemset": []
+      "front_itemset": ["ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["လက်ဖက်ရည်", "ထမင်းကြော်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlyTiAypy-CZBA7QNA",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675875681567%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER7725385218028057313.JPG?alt=media&token=4b9c91c4-c1cf-4fb8-b598-adea4f083519",
+          "item_name" : "ကြက်ဥပလာတာ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNmFAgnObRehYQWmXr5",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880324530%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1856379200483197038.JPG?alt=media&token=d087c472-e6e2-4188-84b1-199058cdd57d",
+          "item_name" : "ပေါင်မုန့်မီးကင်",
+          "item_price" : "1000",
+          "item_status" : "Available"
+        }
+      ]
+    },
+    {
+      "front_itemset": ["လက်ဖက်ရည်", "ကြက်ဥပလာတာ"], 
+      "back_itemset": [
+        {
+          "key": "-NNmS-hWiBc5aP4onhkd",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675883690998%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4583947381730164383.JPG?alt=media&token=ff6de3ef-71f5-4d50-9347-43032321bd3c",
+          "item_name" : "ထမင်းကြော်",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ထမင်းကြော်", "ကြက်ဥပလာတာ"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ထမင်းကြော်", "ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ကြက်ဥပလာတာ", "ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["လက်ဖက်ရည်", "ထမင်းကြော်", "ကြက်ဥပလာတာ"], 
+      "back_itemset": [
+        {
+          "key": "-NNmFAgnObRehYQWmXr5",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880324530%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1856379200483197038.JPG?alt=media&token=d087c472-e6e2-4188-84b1-199058cdd57d",
+          "item_name" : "ပေါင်မုန့်မီးကင်",
+          "item_price" : "1000",
+          "item_status" : "Available"
+        }
+      ]
+    },
+    {
+      "front_itemset": ["လက်ဖက်ရည်", "ထမင်းကြော်", "ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlyTiAypy-CZBA7QNA",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675875681567%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER7725385218028057313.JPG?alt=media&token=4b9c91c4-c1cf-4fb8-b598-adea4f083519",
+          "item_name" : "ကြက်ဥပလာတာ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["လက်ဖက်ရည်", "ကြက်ဥပလာတာ", "ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmS-hWiBc5aP4onhkd",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675883690998%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4583947381730164383.JPG?alt=media&token=ff6de3ef-71f5-4d50-9347-43032321bd3c",
+          "item_name" : "ထမင်းကြော်",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ထမင်းကြော်", "ကြက်ဥပလာတာ", "ပေါင်မုန့်မီးကင်"], 
+      "back_itemset": [
+        {
+          "key": "-NNmHRtvGU8ZyiopEb_u",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675880904784%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER8898446576298592001.JPG?alt=media&token=69535c64-f391-4360-a516-ec9d50296770",
+          "item_name" : "လက်ဖက်ရည်",
+          "item_price" : "1300",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Jagermeister ( P )"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Tiger(Beer)"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Tiger ( J )"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Myanmar Beer"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["အာလူးချောင်းကြော်"], 
+      "back_itemset": [
+        { 
+          "key": "-NNloLkf5TsVfUwy5w00",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873017937%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER318459958928518020.JPG?alt=media&token=9200b5fc-2961-4e1f-903c-3607c7670372",
+          "item_name" : "Red Label ( 1L )",
+          "item_price" : "46000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlppULqDvCZ42Jv5cN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873418330%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3829383680603784427.JPG?alt=media&token=fae1f322-f960-4e4d-a29d-fa281a00be8f",
+          "item_name" : "Jagermeister ( P )",
+          "item_price" : "4200",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NOmEkxPyxzIuVY9a7e9",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871610392%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6729497915523395905.PNG?alt=media&token=8bb4cb42-7872-47be-9b42-e1d202f2f190",
+          "item_name" : "Soju",
+          "item_price" : "4000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ရေခဲပွဲ"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        { 
+          "key": "-NNloLkf5TsVfUwy5w00",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873017937%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER318459958928518020.JPG?alt=media&token=9200b5fc-2961-4e1f-903c-3607c7670372",
+          "item_name" : "Red Label ( 1L )",
+          "item_price" : "46000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlppULqDvCZ42Jv5cN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873418330%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3829383680603784427.JPG?alt=media&token=fae1f322-f960-4e4d-a29d-fa281a00be8f",
+          "item_name" : "Jagermeister ( P )",
+          "item_price" : "4200",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NOmEkxPyxzIuVY9a7e9",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871610392%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6729497915523395905.PNG?alt=media&token=8bb4cb42-7872-47be-9b42-e1d202f2f190",
+          "item_name" : "Soju",
+          "item_price" : "4000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Jagermeister ( P )", "Myanmar Beer"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["Myanmar Beer", "Tiger ( J )"], 
+      "back_itemset": [
+        {
+          "key": "-NO0xTR_9GT6P7ARQBrC",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143865978%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER351990988368533296.JPG?alt=media&token=5ec570e9-cfd9-4a89-b45c-8425c14bd25b",
+          "item_name" : "ရေသန့်",
+          "item_price" : "500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0xP3kmobjbE-W1fiN",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676143845027%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2916540998615176133.JPG?alt=media&token=935aeb3d-ca08-4433-9f53-f0a2e4092f03",
+          "item_name" : "ရေခဲပွဲ",
+          "item_price" : "1500",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NO0zA5cdXYWZkbIke5v",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676144257791%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3596824469084825658.JPG?alt=media&token=a238efde-de94-40db-9844-2ab26844870f",
+          "item_name" : "အာလူးချောင်းကြော်",
+          "item_price" : "3000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm6G_MnI4_Mjj0vuQ7",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675877915446%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER2525856580509790187.JPG?alt=media&token=241c7e94-74aa-47d6-813d-46981f12c52e",
+          "item_name" : "ကြက်သားပြားကြော်",
+          "item_price" : "6000",
+          "item_status" : "Available"
+        },
+        {
+          "key": "-NNm0jG2QjJNeZ4guVvz",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675876542676%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER4461815562080840494.JPG?alt=media&token=f42ce253-7590-486d-ba73-94bcbbe8ea2b",
+          "item_name" : "ကြက်ချိုချဥ်",
+          "item_price" : "5500",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["အာလူးချောင်းကြော်", "ကြက်သားပြားကြော်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	  {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	  {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	  {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["အာလူးချောင်းကြော်", "ကြက်ချိုချဥ်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	  {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	  {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	  {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["အစုံသုပ်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ဝက်အစုံသုပ်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["အာလူးသုပ်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
+    },
+    {
+      "front_itemset": ["ကြက်သားပြားကြော်"], 
+      "back_itemset": [
+        {
+          "key": "-NNlk-4woefLrOvRgemR",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675871804905%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER5894467080858075063.JPG?alt=media&token=2f578817-7594-461c-a0ce-5f77733aa45f",
+          "item_name" : "ABC(Tin)",
+          "item_price" : "2500",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlknPylRmtUE-4SREr",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675872070241%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1208689707462152568.JPG?alt=media&token=fe9de5f2-1225-41ac-b7e3-84ac5b0124db",
+          "item_name" : "Tiger(Beer)",
+          "item_price" : "2000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NNlrilOv4XmPD7jG0-R",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675873916061%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER1151143295999714588.JPG?alt=media&token=17ca7ad5-d25a-4b8b-98a2-ec7f7af70bc9",
+          "item_name" : "Tiger (Cup)",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+ 	      {
+          "key": "-NNltbHiYS0YiFXvfqT6",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1675874392511%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER6872973518574714978.JPG?alt=media&token=81f4e025-1064-4f34-8d81-89a59363c436",
+          "item_name" : "Tiger ( J )",
+          "item_price" : "22000",
+          "item_status" : "Available"
+        },
+	      {
+          "key": "-NO0hMCNFWYsbgx86pRo",
+          "image_path" : "https://firebasestorage.googleapis.com/v0/b/r-pos-2c355.appspot.com/o/images%2F1676139579967%2FDATA%2FUSER%2F0%2FCOM.EXAMPLE.R_POS%2FCACHE%2FIMAGE_PICKER3205274094485800465.JPG?alt=media&token=dbd050a8-e4b3-45b3-af50-3c7564637c6b",
+          "item_name" : "Myanmar Beer",
+          "item_price" : "2200",
+          "item_status" : "Available"
+        },
+      ]
     }
   ];
   List frontItemset = [];
@@ -774,10 +1529,14 @@ class _SelectMenuScreenState extends State<SelectMenuScreen> {
                                                                                       setState(() {
                                                                                         Future(() {
                                                                                           if (j <= 0 && data.length == 1) {
+                                                                                            frontItemset.removeAt(frontItemset.indexOf(data[j]["name"]));
+                                                                                            suggestedMenuSet.clear();
                                                                                             Navigator.pop(context);
                                                                                           }
                                                                                         }).then((value) {
                                                                                           if (j <= 0 && data.length == 1) {
+                                                                                            frontItemset.clear();
+                                                                                            suggestedMenuSet.clear();
                                                                                             data = [];
                                                                                             selectedMenuCard[i] = [];
                                                                                             selectedMenuCard.removeAt(i);
