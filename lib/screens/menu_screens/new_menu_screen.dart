@@ -203,7 +203,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       });
                     },
                     child: AbsorbPointer(
-                      child: textField("Set special status", MediaQuery.of(context).size.width * 0.9, _menuStatus, TextInputType.name, "")
+                      child: textField("Set special status", MediaQuery.of(context).size.width * 0.9, _specialStatus, TextInputType.name, "")
                     ),
                   ),
                   Center(
